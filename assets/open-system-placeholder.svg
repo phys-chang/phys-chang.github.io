@@ -1,0 +1,27 @@
+<svg width="1200" height="520" viewBox="0 0 1200 520" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Open system dynamics placeholder</title>
+  <desc id="desc">A minimal placeholder showing sites, arrows, and trajectories for open quantum dynamics.</desc>
+  <rect width="1200" height="520" rx="36" fill="#FBFAF7"/>
+  <path d="M120 385C240 230 346 432 474 254C598 82 722 437 856 226C956 68 1010 338 1080 178" stroke="#315F72" stroke-width="5" stroke-linecap="round"/>
+  <path d="M120 284C246 355 326 155 452 223C598 302 676 164 826 312C950 435 1014 206 1080 278" stroke="#9B7044" stroke-width="4" stroke-linecap="round" opacity="0.82"/>
+  <g opacity="0.95">
+    <circle cx="220" cy="307" r="20" fill="#E8F0F2" stroke="#315F72" stroke-width="4"/>
+    <circle cx="385" cy="282" r="20" fill="#E8F0F2" stroke="#315F72" stroke-width="4"/>
+    <circle cx="550" cy="234" r="20" fill="#E8F0F2" stroke="#315F72" stroke-width="4"/>
+    <circle cx="715" cy="298" r="20" fill="#E8F0F2" stroke="#315F72" stroke-width="4"/>
+    <circle cx="880" cy="232" r="20" fill="#E8F0F2" stroke="#315F72" stroke-width="4"/>
+    <circle cx="1030" cy="274" r="20" fill="#E8F0F2" stroke="#315F72" stroke-width="4"/>
+  </g>
+  <path d="M247 302L356 286" stroke="#D1C6B6" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M414 275L520 244" stroke="#D1C6B6" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M580 245L683 287" stroke="#D1C6B6" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M744 288L850 242" stroke="#D1C6B6" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M909 240L999 265" stroke="#D1C6B6" stroke-width="4" stroke-linecap="round" marker-end="url(#arrow)"/>
+  <path d="M132 410H1074" stroke="#D9D2C7" stroke-width="2" stroke-linecap="round" stroke-dasharray="6 12"/>
+  <text x="600" y="462" text-anchor="middle" font-family="Georgia, serif" font-size="30" fill="#6D665F">open-system / many-body dynamics figure placeholder</text>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L0,6 L6,3 z" fill="#D1C6B6" />
+    </marker>
+  </defs>
+</svg>
