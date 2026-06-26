@@ -1,1 +1,3 @@
-Put PDFs, HTML notes, and Mathematica notebooks here.
+# Notes
+
+Put PDFs, HTML notes, Mathematica notebooks, or other note files here and link them from `../notes.html`.

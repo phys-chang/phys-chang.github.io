@@ -1,18 +1,21 @@
 # Chang Shu — personal homepage
 
-A clean static academic homepage designed for GitHub Pages. The layout is inspired by Ethan Lake's spare academic homepage style: large centered title, thin rules, simple navigation, concise intro text, and list-based notes / papers.
+A clean static academic homepage designed for GitHub Pages. The layout is inspired by Ethan Lake's spare academic homepage style: large centered title, thin pale-blue rules, simple navigation, concise intro text, and list-based notes / papers.
 
-The research narrative is written with **open quantum systems** and **many-body dynamics** as the current focus, while **non-Hermitian physics** appears as a set of spectral and boundary-sensitive tools.
+The research narrative is written with **open quantum systems** and **many-body dynamics** as the current focus, while **non-Hermitian physics** appears as a set of spectral and boundary-sensitive tools. The visual system is deliberately line-based rather than card-based, with a pale-blue palette.
 
 ## Files
 
 - `index.html` — homepage
 - `publications.html` — selected publications with topic filters
+- `papers.html` — redirect alias to `publications.html`
 - `notes.html` — placeholder notes page
-- `styles.css` — typography, layout, responsive styling
+- `styles.css` — typography, layout, responsive styling; pale-blue palette with line separators rather than boxed cards
 - `script.js` — topic filter and dynamic footer year
+- `publications.bib` — BibTeX entries for selected papers
 - `assets/portrait-placeholder.svg` — replace with a real portrait when ready
 - `assets/open-system-placeholder.svg` — replace with a spectrum, phase diagram, or dynamics sketch
+- `notes/README.md` — placeholder for future PDFs, HTML notes, and notebooks
 - `.nojekyll` — keeps GitHub Pages from running Jekyll
 
 ## Customize
