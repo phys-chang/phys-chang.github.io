@@ -106,6 +106,19 @@ p {
   margin-top: 0;
 }
 
+p {
+  overflow-wrap: break-word;
+  text-wrap: pretty;
+}
+
+.intro-copy p,
+.section-heading p,
+.page-intro p {
+  hyphens: auto;
+  text-align: justify;
+  text-align-last: left;
+}
+
 h1 {
   margin-bottom: 1rem;
   color: var(--ink);
@@ -274,6 +287,11 @@ main > .section-block:first-child {
   border-bottom: 1px solid var(--line);
 }
 
+.section-heading > div {
+  flex: 1;
+  min-width: 0;
+}
+
 .section-heading.compact {
   align-items: center;
 }
@@ -285,7 +303,12 @@ main > .section-block:first-child {
   margin-bottom: 0;
 }
 
-.section-heading p,
+.section-heading p {
+  max-width: none;
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
 .page-intro p {
   max-width: 68ch;
   margin-bottom: 0;
