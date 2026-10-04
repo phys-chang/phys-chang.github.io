@@ -11,7 +11,7 @@ The research narrative is written with **open quantum systems** and **many-body 
 - `papers.html` — redirect alias to `publications.html`
 - `notes.html` — Visual Stories: numerical methodology first, followed by illustrated stories of individual papers
 - `styles.css` — typography, layout, responsive styling; pale-blue palette with line separators rather than boxed cards
-- `script.js` — topic filter and dynamic footer year
+- `script.js` — LaTeX rendering, topic filter, and dynamic footer year
 - `publications.bib` — BibTeX entries for selected papers
 - `assets/portrait-placeholder.svg` — replace with a real portrait when ready
 - `assets/open-system-placeholder.svg` — replace with a spectrum, phase diagram, or dynamics sketch
@@ -29,6 +29,12 @@ The research narrative is written with **open quantum systems** and **many-body 
 3. Replace the placeholder GitHub link with your GitHub profile.
 4. Add research illustrations under `assets/img/`. In `notes.html`, put numerical methods in Methodology and illustrated accounts of individual papers in Research Stories.
 5. Keep publication metadata current by copying entries from arXiv or Google Scholar.
+
+## Equations
+
+All content pages load [KaTeX](https://katex.org/docs/autorender.html) 0.19.0 with shared rendering options in `script.js`. Write inline mathematics as `\(d^2\)` and display equations as `\[ ... \]`. Use LaTeX source for every equation in webpage text; keep image alt text readable without a math renderer. Display equations sit in a `.method-equation` container and can scroll horizontally on small screens.
+
+The KaTeX CSS and JavaScript come from pinned CDN URLs with integrity checks. When changing the shared CSS or JavaScript, update their `?v=` value in all content pages so browsers fetch the new version.
 
 ## Deploy on GitHub Pages
 

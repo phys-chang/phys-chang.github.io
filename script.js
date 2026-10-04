@@ -1,3 +1,13 @@
+if (typeof window.renderMathInElement === 'function') {
+  window.renderMathInElement(document.body, {
+    delimiters: [
+      { left: '\\[', right: '\\]', display: true },
+      { left: '\\(', right: '\\)', display: false },
+    ],
+    throwOnError: false,
+  });
+}
+
 const yearNodes = document.querySelectorAll('#year');
 const currentYear = new Date().getFullYear();
 yearNodes.forEach((node) => {

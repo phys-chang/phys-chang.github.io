@@ -532,7 +532,17 @@ main > .section-block:first-child {
   margin: 1.35rem 0 0;
   color: var(--accent-strong);
   font-size: clamp(1rem, 2.4vw, 1.15rem);
-  overflow-wrap: anywhere;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.method-equation .katex-display {
+  margin: 0;
+  padding: 0.35rem 0;
+}
+
+.method-equation .katex-display > .katex {
+  text-align: left;
 }
 
 .site-footer {
