@@ -3,9 +3,9 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Notes by Chang Shu.">
+  <meta name="description" content="Chang Shu's research in pictures: numerical methods for open quantum systems and illustrated stories of individual papers.">
   <meta name="author" content="Chang Shu">
-  <title>Chang Shu — Notes</title>
+  <title>Chang Shu — Visual Stories</title>
   <link rel="stylesheet" href="styles.css">
   <script defer src="script.js"></script>
 </head>
@@ -14,58 +14,114 @@
 
   <div class="site-shell">
     <header class="masthead" id="top">
-      <p class="eyebrow">Short notes · derivations · notebooks</p>
-      <h1>Notes</h1>
+      <p class="eyebrow">Methods · Illustrated research</p>
+      <h1>Visual Stories</h1>
       <div class="rule" aria-hidden="true"></div>
       <nav class="nav" aria-label="Primary navigation">
         <a href="index.html">Home</a>
         <a href="publications.html">Publications</a>
-        <a href="notes.html" aria-current="page">Notes</a>
+        <a href="notes.html" aria-current="page">Visual Stories</a>
         <a href="index.html#contact">Contact</a>
       </nav>
     </header>
 
     <main id="main">
-      <section class="section-block page-intro">
-        <h2>Notes</h2>
-        <p>
-          This page is under construction,
-          <!-- This page is intentionally simple: a place for informal derivations, reading notes, and Mathematica notebooks.
-          Replace the placeholders below with PDFs, HTML notes, or notebooks in the <code>notes/</code> folder. -->
-        </p>
+      <section class="section-block" id="methodology" aria-labelledby="methodology-title">
+        <div class="section-heading">
+          <div>
+            <p class="paper-meta">01 · How I study open quantum systems</p>
+            <h2 id="methodology-title">Methodology</h2>
+            <p>A look at the numerical tools behind my research.</p>
+          </div>
+        </div>
+
+        <article class="method-entry" id="lindbladian-tebd" aria-labelledby="tebd-title">
+          <h3 id="tebd-title">Lindbladian TEBD</h3>
+          <p>
+            To follow the dynamics of an open quantum many-body system, I vectorize its density matrix and represent it as a
+            matrix product state (MPS). I then evolve this state with local quantum-channel gates using time-evolving block
+            decimation (TEBD).
+          </p>
+
+          <figure class="wide-figure">
+            <img src="assets/img/lindbladian-tebd.png" width="1672" height="941" decoding="async"
+                 alt="Lindbladian TEBD in three stages: pair the density matrix's bra and ket indices into a doubled state, represent it as a chain of blue MPS tensors, and evolve it with alternating layers of green two-site channel gates. After each gate, split with SVD, truncate, and repeat.">
+            <figcaption>
+              From a density matrix to tensor-network time evolution. Blue tensors represent the state; green gates implement
+              local evolution. <a href="assets/img/lindbladian-tebd.png">View the full-size figure →</a>
+            </figcaption>
+          </figure>
+
+          <ol class="method-steps">
+            <li>
+              <h4>Vectorize the density matrix</h4>
+              <p>Pair the bra and ket indices at each site, giving an effective local dimension of d².</p>
+            </li>
+            <li>
+              <h4>Build a matrix product state</h4>
+              <p>Store the vectorized state as a chain of local tensors. The bond dimension χ controls the size of the representation.</p>
+            </li>
+            <li>
+              <h4>Evolve and truncate</h4>
+              <p>Apply alternating layers of local gates. After each gate, use a singular value decomposition (SVD) and retain the largest singular values.</p>
+            </li>
+          </ol>
+
+          <p class="method-reference">
+            Further reading: <a href="https://arxiv.org/abs/cond-mat/0406440">Zwolak &amp; Vidal, mixed-state dynamics with TEBD (2004)</a>.
+          </p>
+        </article>
+
+        <article class="method-entry" id="quantum-trajectories" aria-labelledby="trajectory-title">
+          <h3 id="trajectory-title">Monte Carlo wavefunction method</h3>
+          <p>
+            Also known as the quantum trajectory method, this approach samples Lindblad dynamics with an ensemble of
+            pure states. I use it to study interacting open systems with particle loss and gain.
+          </p>
+
+          <figure class="wide-figure">
+            <img src="assets/img/quantum-trajectories.png" width="1672" height="941" loading="lazy" decoding="async"
+                 alt="Quantum trajectory method: prepare M copies of an initial pure state; at each time step, sample no-jump evolution under the effective Hamiltonian or a jump operator, then normalize; average the resulting pure-state projectors to estimate the density matrix. Jump probabilities are pμ = Δt⟨ψ|Lμ†Lμ|ψ⟩ and p0 = 1 − ∑μ pμ. The illustrated histories are schematic.">
+            <figcaption>
+              Independent jump histories combine into Lindblad dynamics. Schematic illustration, based on my DQPT paper's
+              supplemental method. <a href="assets/img/quantum-trajectories.png">View the full-size figure →</a>
+            </figcaption>
+          </figure>
+
+          <ol class="method-steps">
+            <li>
+              <h4>Prepare the ensemble</h4>
+              <p>Start M trajectories from the same state. In my DQPT calculation, this is the half-filled ground state before the quench.</p>
+            </li>
+            <li>
+              <h4>Sample and normalize</h4>
+              <p>Compute the no-jump and jump probabilities at each small time step. Sample one outcome, apply its operator, normalize, and repeat.</p>
+            </li>
+            <li>
+              <h4>Average the trajectories</h4>
+              <p>Estimate observables from the ensemble. For the DQPT signal, average the squared overlaps with the initial state.</p>
+            </li>
+          </ol>
+
+          <p class="method-equation">g(t) ≈ (1/M) ∑ₘ |⟨ψ₀|ψₘ(t)⟩|²</p>
+          <p class="method-reference">
+            Source: <a href="https://arxiv.org/pdf/2509.03570v2#page=13">DQPT paper, Supplemental Material IV</a>,
+            Eqs. (50)–(57) and the numerical procedure.
+          </p>
+        </article>
       </section>
 
-      <!-- <section class="section-block notes-list" aria-label="Notes list">
-        <article class="note-item" id="swssb">
-          <p class="paper-meta">Draft note</p>
-          <h3><a href="#">Strong-to-weak spontaneous symmetry breaking in open systems</a></h3>
-          <p>A placeholder for notes on Rényi-2 correlations, Lindbladian symmetry classes, and finite-size dynamical scaling.</p>
-        </article>
-
-        <article class="note-item" id="dqpt">
-          <p class="paper-meta">Draft note</p>
-          <h3><a href="#">Dynamical quantum phase transitions and many-body backflow</a></h3>
-          <p>A placeholder for calculations comparing effective non-Hermitian dynamics with full Liouvillian evolution and jump processes.</p>
-        </article>
-
-        <article class="note-item" id="liouvillian">
-          <p class="paper-meta">Reading note</p>
-          <h3><a href="#">Liouvillian spectra vs effective non-Hermitian Hamiltonians</a></h3>
-          <p>A concise reference page for conventions, vectorization, symmetries, and when the effective Hamiltonian picture is insufficient.</p>
-        </article>
-
-        <article class="note-item" id="spectral-tools">
-          <p class="paper-meta">Reference</p>
-          <h3><a href="#">Spectral moments and boundary-sensitive spectra</a></h3>
-          <p>A placeholder for loop-counting arguments, moment identities, and sanity checks in finite non-Hermitian lattices.</p>
-        </article>
-
-        <article class="note-item" id="mathematica">
-          <p class="paper-meta">Notebook archive</p>
-          <h3><a href="#">Mathematica notebook archive</a></h3>
-          <p>A placeholder for analytical and numerical notebooks; keep files in <code>notes/notebooks/</code> and link them here.</p>
-        </article>
-      </section> -->
+      <section class="section-block" id="research-stories" aria-labelledby="research-stories-title">
+        <div class="section-heading">
+          <div>
+            <p class="paper-meta">02 · The story behind each paper</p>
+            <h2 id="research-stories-title">Research Stories</h2>
+            <p>Each work unfolds as an illustrated story, from the question that started it to the physics we uncovered.</p>
+          </div>
+        </div>
+        <p>Illustrated stories of individual papers are coming soon.</p>
+        <p class="read-more"><a href="publications.html">Browse the papers →</a></p>
+      </section>
     </main>
 
     <footer class="site-footer">
