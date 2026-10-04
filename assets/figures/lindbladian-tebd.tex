@@ -1,0 +1,69 @@
+\documentclass[dvisvgm,border=0pt]{standalone}
+\input{figure-style.tex}
+
+\begin{document}
+\begin{tikzpicture}[x=1bp,y=-1bp]
+  \figbackground{1672}{941}
+  \figtext[Ink]{836}{100}{38}{Tensor-network time evolution for open quantum systems}
+  \panelrules
+  \panelheading{90}{01}{Vectorize}
+  \panelheading{591}{02}{Build an MPS}
+  \panelheading{1133}{03}{Evolve in time}
+
+  % Density operator: separate ket and bra indices at each site.
+  \figmath{275}{260}{39}{\rho \longrightarrow \lvert\rho\rangle\!\rangle}
+  \foreach \x/\i in {140/1,240/2,340/3,440/4} {
+    \draw[wire] (\x,310) -- (\x,350);
+    \draw[wire] (\x,400) -- (\x,434);
+    \figmath{\x}{291}{25}{\lvert i_{\i}\rangle}
+    \figmath{\x}{458}{25}{\langle j_{\i}\rvert}
+  }
+  \statebox{80}{350}{470}{400}
+  \figmath{275}{375}{37}{\rho}
+  \draw[gold arrow] (82,486) .. controls (80,520) and (86,531) .. (106,546);
+  \foreach \x/\i in {140/1,240/2,340/3,440/4} {
+    \draw[wire] ({\x-5},545) -- ({\x-5},585);
+    \draw[wire] ({\x+5},545) -- ({\x+5},585);
+    \figtext{\x}{527}{25}{\i}
+  }
+  \statebox{80}{585}{470}{640}
+  \figmath{275}{612}{38}{\lvert\rho\rangle\!\rangle}
+  \figtext[Ink]{275}{709}{31}{Pair bra and ket indices}
+
+  % Matrix product state with paired physical legs and horizontal bonds.
+  \draw[wire] (620,459) -- (1040,459);
+  \draw[Gold,line width=6bp] (794,459) -- (866,459);
+  \foreach \x in {620,760,900,1040} {
+    \draw[wire] ({\x-5},365) -- ({\x-5},427);
+    \draw[wire] ({\x+5},365) -- ({\x+5},427);
+    \statebox{\x-34}{427}{\x+34}{491}
+  }
+  \figmath[Gold]{830}{422}{38}{\chi}
+  \figtext[Ink]{810}{601}{32}{Local dimension $d^2$}
+
+  % Six fused bra-ket site wires; the layers act on (12,34,56)/(23,45).
+  \foreach \x in {1150,1235,1320,1405,1490,1575} {
+    \draw[wire] ({\x-4},304) -- ({\x-4},582);
+    \draw[wire] ({\x+4},304) -- ({\x+4},582);
+  }
+  \foreach \x in {1150,1320,1490} {
+    \operationbox{\x-21}{338}{\x+106}{382}
+    \operationbox{\x-21}{516}{\x+106}{560}
+  }
+  \foreach \x in {1235,1405} {
+    \operationbox{\x-21}{427}{\x+106}{471}
+  }
+  \draw[wire] (1150,610) -- (1575,610);
+  \foreach \x/\i in {1150/1,1235/2,1320/3,1405/4,1490/5,1575/6} {
+    \statebox{\x-28}{582}{\x+28}{638}
+    \figtext{\x}{666}{25}{\i}
+  }
+  \draw[time arrow] (1640,640) -- (1640,304);
+  \figmath{1640}{276}{35}{t}
+  \figmath{1360}{268}{37}{\mathcal{E}(\Delta t)=e^{\Delta t\,\mathcal{L}}}
+  \figtext[Ink]{1360}{710}{29}{Alternating local channel gates}
+
+  \processstrip{Apply a gate}{Split with SVD}{Truncate}{Repeat}
+  \figtext[Ink]{836}{898}{28}{Keep the largest singular values to control the bond dimension}
+\end{tikzpicture}
+\end{document}

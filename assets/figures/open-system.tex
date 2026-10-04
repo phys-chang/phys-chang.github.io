@@ -1,0 +1,34 @@
+\documentclass[dvisvgm,border=0pt]{standalone}
+\input{figure-style.tex}
+
+\begin{document}
+\begin{tikzpicture}[x=1bp,y=-1bp]
+  \figbackground{1672}{360}
+
+  % Preserve the spin-chain, gain, and loss content of the original schematic.
+  \draw[Rule,line width=6bp] (400,172) -- (880,172);
+  \draw[Rule,line width=6bp] (880,172) -- (995,172);
+  \draw[Rule,line width=6bp] (1120,172) -- (1280,172);
+  \figmath{1057}{172}{35}{\cdots}
+  \foreach \x in {400,640,880,1280} {
+    \fill[Blue,opacity=.08] (\x+4,178) circle (38bp);
+    \draw[draw=Blue,fill=BlueTint,line width=3bp] (\x,172) circle (38bp);
+  }
+  \draw[draw=Sage,line width=4bp,-{Stealth[length=16bp,width=14bp]}]
+    (376,224) -- (432,110);
+  \draw[draw=Sage,line width=4bp,-{Stealth[length=16bp,width=14bp]}]
+    (670,218) -- (604,116);
+  \draw[draw=Sage,line width=4bp,-{Stealth[length=16bp,width=14bp]}]
+    (936,150) -- (814,195);
+  \draw[draw=Sage,line width=4bp,-{Stealth[length=16bp,width=14bp]}]
+    (1240,128) -- (1330,223);
+  \draw[draw=Gold,line width=3bp,decorate,
+    decoration={snake,amplitude=3bp,segment length=13bp,post length=7bp},
+    -{Stealth[length=15bp,width=13bp]}] (558,277) -- (614,207);
+  \draw[draw=Blue,line width=3bp,decorate,
+    decoration={snake,amplitude=3bp,segment length=13bp,post length=7bp},
+    -{Stealth[length=15bp,width=13bp]}] (899,137) -- (973,63);
+  \figmath{565}{312}{44}{\sqrt{\gamma_g}\,\sigma^+}
+  \figmath{991}{36}{44}{\sqrt{\gamma_l}\,\sigma^-}
+\end{tikzpicture}
+\end{document}

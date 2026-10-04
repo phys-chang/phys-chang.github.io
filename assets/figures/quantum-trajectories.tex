@@ -1,0 +1,80 @@
+\documentclass[dvisvgm,border=0pt]{standalone}
+\input{figure-style.tex}
+
+\begin{document}
+\begin{tikzpicture}[x=1bp,y=-1bp]
+  \figbackground{1672}{941}
+  \figtext[Ink]{836}{100}{38}{Wavefunctions with stochastic quantum jumps}
+  \panelrules
+  \panelheading{90}{01}{Prepare copies}
+  \panelheading{591}{02}{Sample a step}
+  \panelheading{1133}{03}{Average trajectories}
+
+  % Independent copies of the same initial state.
+  \draw[blue arrow] (175,442) -- (245,322) -- (302,322);
+  \draw[blue arrow] (175,442) -- (302,442);
+  \draw[blue arrow] (175,442) -- (245,562) -- (302,562);
+  \statebox{65}{409}{175}{475}
+  \figmath{120}{442}{36}{\lvert\psi_0\rangle}
+  \foreach \y in {322,442,562} {
+    \statebox{302}{\y-33}{418}{\y+33}
+    \figmath{360}{\y}{36}{\lvert\psi_0\rangle}
+  }
+  \foreach \y in {620,634,648} {\fill[Navy] (360,\y) circle (3bp);}
+  \figtext[Ink]{275}{710}{30}{$M$ copies of the initial state}
+
+  % One categorical outcome is selected at each discrete time step.
+  \draw[blue arrow] (655,430) -- (680,327) -- (690,327);
+  \draw[blue arrow] (655,454) -- (680,551) -- (690,551);
+  \draw[blue arrow] (840,327) -- (890,327) -- (920,420);
+  \draw[blue arrow] (840,551) -- (890,551) -- (920,464);
+  \statebox{557}{409}{655}{475}
+  \figmath{606}{442}{31}{\lvert\psi(t)\rangle}
+  \operationbox{690}{300}{840}{354}
+  \operationbox{690}{524}{840}{578}
+  \figtext{765}{327}{31}{\textbf{No jump}}
+  \figtext{765}{551}{31}{\textbf{Jump}}
+  \figmath{664}{292}{31}{p_0}
+  \figmath{664}{509}{31}{p_\mu}
+  \figmath{770}{387}{25}{(I-iH_{\mathrm{eff}}\Delta t)\lvert\psi\rangle}
+  \figmath{765}{612}{34}{L_\mu\lvert\psi\rangle}
+  \statebox{920}{409}{1042}{475}
+  \figtext{981}{442}{25}{Normalize}
+  \figmath{981}{514}{27}{\lvert\psi(t+\Delta t)\rangle}
+  \figtext[Ink]{812}{681}{27}{Sample one outcome\\at each time step}
+
+  % Schematic histories, not plotted observables or numerical data.
+  \draw[time arrow] (1125,270) -- (1618,270);
+  \figmath{1618}{238}{35}{t}
+  \draw[blue arrow] (1120,329) -- (1150,329) -- (1150,343) --
+    (1172,343) -- (1172,334) -- (1270,334) -- (1270,329) -- (1360,329);
+  \draw[blue arrow] (1120,425) -- (1158,425) -- (1158,443) --
+    (1242,443) -- (1242,435) -- (1298,435) -- (1298,440) -- (1360,440);
+  \draw[blue arrow] (1120,550) -- (1170,550) -- (1170,556) --
+    (1260,556) -- (1260,545) -- (1310,545) -- (1310,550) -- (1360,550);
+  \foreach \x/\y in {1190/334,1158/443,1242/435,1152/550,1212/556,1260/545,1310/550} {
+    \fill[Gold] (\x,\y) circle (7bp);
+  }
+  \draw[wire] (1475,329) .. controls (1530,329) and (1500,427) .. (1545,427);
+  \draw[wire] (1475,440) -- (1545,440);
+  \draw[wire] (1475,550) .. controls (1530,550) and (1500,453) .. (1545,453);
+  \foreach \y/\m in {329/1,440/2,550/M} {
+    \statebox{1360}{\y-31}{1475}{\y+31}
+    \figmath{1417}{\y}{30}{\lvert\psi_{\m}(t)\rangle}
+  }
+  \foreach \y in {490,502,514} {\fill[Navy] (1417,\y) circle (3bp);}
+  \statebox{1545}{407}{1635}{475}
+  \figmath{1590}{441}{34}{\rho(t)}
+  \figmath{1365}{637}{31}{
+    \rho(t)\approx\frac{1}{M}\sum_{m=1}^{M}
+    \lvert\psi_m(t)\rangle\langle\psi_m(t)\rvert
+  }
+  \figtext[Ink]{1365}{710}{29}{Average pure-state projectors}
+
+  \processstrip{Compute probabilities}{Sample an outcome}{Normalize}{Repeat}
+  \figmath{836}{894}{29}{
+    \textstyle p_\mu=\Delta t\,\langle\psi\rvert L_\mu^\dagger L_\mu\lvert\psi\rangle
+    \qquad p_0=1-\sum_\mu p_\mu
+  }
+\end{tikzpicture}
+\end{document}
