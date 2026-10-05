@@ -307,7 +307,7 @@
   \foreach \k in {6,5,4,3,2,1,0} {
     \pgfmathsetmacro{\s}{0.30+0.15*\k}
     \pgfmathsetmacro{\q}{(exp(4*\s)-1)/(exp(4*\s)+1)}
-    \fill[BlueTint!80!white]
+    \fill[BlueTint!80!white,fill opacity=0.5]
       ({580-480+27*\k},{1510-80-30*\k})
       -- plot[domain=-40:40,samples=161,variable=\r]
         ({580+12*\r+27*\k},{1510+2*\r-30*\k-300*pow(\q,abs(\r))})
