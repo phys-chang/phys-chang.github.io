@@ -682,6 +682,10 @@ main > .section-block:first-child {
   font-size: clamp(1.4rem, 2.5vw, 1.7rem);
 }
 
+.story-simulation-link {
+  margin: 1.1rem 0 1.35rem;
+}
+
 .method-steps {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
