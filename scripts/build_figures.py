@@ -72,6 +72,22 @@ FIGURES = {
         "exponential Z2 growth and algebraic U(1) growth, with near-ballistic "
         "finite filling and diffusive single-particle or single-hole limits.",
     ),
+    "ultrasensitivity": (
+        1672,
+        2420,
+        "Two tiny defects, one dramatic response",
+        "A three-panel visual story based on Chang Shu, Kai Zhang and Kai Sun, "
+        "arXiv:2409.13623. Panel 01 compares one weak local impurity with two "
+        "distant weak impurities in a reciprocal non-Hermitian 2D cylinder, "
+        "open along x and periodic along y. Computed complex-energy spectra "
+        "show nearly unchanged energies with one defect and new branches with "
+        "two. Panel 02 illustrates the two-way Green-function response, its "
+        "round-trip product, and the geometry-dependent nonperturbative scale. "
+        "Panel 03 shows an induced nonlocal channel and successive wavepacket "
+        "returns, with a schematic log-norm decay profile showing repeated "
+        "slow-decay passages. Response and wavepacket drawings are schematic; "
+        "the spectrum points are a numerical reproduction of the paper's model.",
+    ),
 }
 
 
@@ -157,6 +173,8 @@ def build(name):
         print(f"{target.relative_to(ROOT)}: {target.stat().st_size:,} bytes, vector paths")
     if name == "swssb":
         build_swssb_preview()
+    elif name == "ultrasensitivity":
+        build_ultrasensitivity_preview()
 
 
 def build_swssb_preview():
@@ -181,6 +199,29 @@ def build_swssb_preview():
         "the pair-dephasing example while ordinary Z-spin correlations remain zero."
     )
     target = DESTINATION / "swssb-spreading-preview.svg"
+    ET.ElementTree(root).write(target, encoding="utf-8", xml_declaration=True)
+    print(f"{target.relative_to(ROOT)}: {target.stat().st_size:,} bytes, vector panel crop")
+
+
+def build_ultrasensitivity_preview():
+    """Export the spectrum comparison as a full-width homepage viewport."""
+    root = ET.parse(DESTINATION / "ultrasensitivity.svg").getroot()
+    x, y, width, height = map(float, root.attrib["viewBox"].split())
+    canvas_width, canvas_height = FIGURES["ultrasensitivity"][:2]
+    crop_height = 941
+    root.attrib.update(
+        width=str(canvas_width),
+        height=str(crop_height),
+        viewBox=f"{x:.5f} {y:.5f} {width:.5f} {crop_height * height / canvas_height:.5f}",
+        overflow="hidden",
+    )
+    root.find(f"{{{SVG_NS}}}title").text = "One weak defect, or two?"
+    root.find(f"{{{SVG_NS}}}desc").text = (
+        "Panel 01 of the ultrasensitivity story. One weak defect barely shifts "
+        "the computed complex-energy spectrum of a reciprocal 2D cylinder; "
+        "two distant weak defects create separated spectral branches."
+    )
+    target = DESTINATION / "ultrasensitivity-preview.svg"
     ET.ElementTree(root).write(target, encoding="utf-8", xml_declaration=True)
     print(f"{target.relative_to(ROOT)}: {target.stat().st_size:,} bytes, vector panel crop")
 

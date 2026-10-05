@@ -1,0 +1,228 @@
+\documentclass[dvisvgm,border=0pt]{standalone}
+\input{figure-style.tex}
+\input{ultrasensitivity-spectrum-data.tex}
+
+% arXiv:2409.13623v1, Sections II--V and Methods.
+% The cylinder is reciprocal: arrows below denote response, not hopping bias.
+\newcommand{\ultraheading}[3]{
+  \fill[BlueTint] (90,#1) circle (35bp);
+  \node[text=Navy,font=\fontsize{40}{42}\selectfont\bfseries,inner sep=0bp]
+    at (90,#1) {#2};
+  \node[text=Navy,anchor=west,font=\fontsize{40}{42}\selectfont\bfseries,inner sep=0bp]
+    at (152,#1) {#3};
+}
+
+% Transparent cylinder surface: open axial ends, periodic circumference.
+\newcommand{\ultracylinder}[1]{
+  \begin{scope}[shift={(#1,0)}]
+    \fill[BlueTint!65] (244,365) rectangle (594,505);
+    \fill[BlueTint!65] (594,435) ellipse (36bp and 70bp);
+    \fill[white] (244,435) ellipse (36bp and 70bp);
+    \foreach \x in {244,314,384,454,524,594} {
+      \draw[Rule,line width=1.8bp]
+        plot[domain=-90:90,samples=35,variable=\a]
+          ({\x+36*cos(\a)},{435+70*sin(\a)});
+    }
+    \foreach \a in {-60,-30,0,30,60} {
+      \draw[Rule,line width=1.8bp]
+        ({244+36*cos(\a)},{435+70*sin(\a)})
+        -- ({594+36*cos(\a)},{435+70*sin(\a)});
+      \foreach \x in {244,314,384,454,524,594} {
+        \fill[Blue!65] ({\x+36*cos(\a)},{435+70*sin(\a)}) circle (2.5bp);
+      }
+    }
+    \draw[Blue,line width=2.5bp] (244,435) ellipse (36bp and 70bp);
+    \draw[Blue,line width=2.5bp] (594,435) ellipse (36bp and 70bp);
+    \draw[Blue,line width=2.5bp] (244,365) -- (594,365);
+    \draw[Blue,line width=2.5bp] (244,505) -- (594,505);
+    \figtext[Ink]{429}{553}{24}{Open ends in $x$ $\cdot$ Periodic around $y$}
+  \end{scope}
+}
+
+\newcommand{\ultradefect}[3]{
+  \fill[Gold,opacity=.18] (#1,#2) circle (25bp);
+  \draw[draw=Sage,fill=SageTint,line width=3bp] (#1,#2) circle (14bp);
+  \fill[Gold] (#1,#2) circle (5bp);
+  \figmath[Sage]{#1}{#2+91}{27}{#3}
+}
+
+% Each series uses the same physical complex-energy axes.
+\newcommand{\ultrapoints}[3]{
+  \begingroup
+  \edef\pointplot{\noexpand\draw[#1]
+    plot[only marks,mark=*,mark size=#2bp] coordinates {#3};}
+  \pointplot
+  \endgroup
+}
+\newcommand{\ultraspectrum}[2]{
+  \begin{scope}[shift={(#1,580)}]
+    \foreach \e in {-4,-2,0} {
+      \draw[Rule,line width=1bp] (170,{(0.2-\e)/4.4*220}) -- (720,{(0.2-\e)/4.4*220});
+      \figmath[Muted]{144}{{(0.2-\e)/4.4*220}}{21}{\e}
+    }
+    \draw[time arrow] (170,220) -- (751,220);
+    \draw[time arrow] (170,220) -- (170,-15);
+    \foreach \e in {-6,0,6} {
+      \draw[Muted,line width=1.5bp] ({170+(\e+6.5)/13*550},220) -- ({170+(\e+6.5)/13*550},226);
+      \figmath[Muted]{{170+(\e+6.5)/13*550}}{247}{21}{\e}
+    }
+    \figmath[Ink]{145}{-27}{25}{\operatorname{Im}E}
+    \figmath[Ink]{764}{226}{25}{\operatorname{Re}E}
+    \begin{scope}[shift={(170,0)}]
+      \ultrapoints{Blue,fill=Blue,draw opacity=.5,fill opacity=.5}{1.9}{\SpectrumCleanCoordinates}
+      \ifnum#2=1\relax
+        \ultrapoints{Sage,fill=Sage,draw opacity=.7,fill opacity=.7}{1.0}{\SpectrumOneCoordinates}
+      \else
+        \ultrapoints{Sage,fill=Sage,draw opacity=.6,fill opacity=.6}{1.0}{\SpectrumTwoCoordinates}
+        \ultrapoints{Gold!80!Navy,fill=Gold}{3.0}{\SpectrumInducedCoordinates}
+      \fi
+    \end{scope}
+  \end{scope}
+}
+
+\begin{document}
+\begin{tikzpicture}[x=1bp,y=-1bp]
+  \figbackground{1672}{2420}
+  \figtext[Ink]{836}{85}{38}{Tiny local defects, a distant spectral response}
+  \ultraheading{190}{01}{One weak defect, or two?}
+  \figtext[Ink]{836}{247}{30}{A local Hamiltonian can have a nonlocal spectral response}
+
+  \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
+    (65,285) rectangle (793,877);
+  \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
+    (879,285) rectangle (1607,877);
+  \figtext{429}{319}{33}{\textbf{One weak impurity}}
+  \figtext{1243}{319}{33}{\textbf{Two distant weak impurities}}
+  \ultracylinder{0}
+  \ultracylinder{814}
+  \ultradefect{280}{435}{V}
+  \ultradefect{1094}{435}{V}
+  \ultradefect{1444}{435}{V}
+  \draw[draw=Sage!65,line width=1.8bp,{Stealth[length=10bp]}-{Stealth[length=10bp]}]
+    (1120,482) -- (1418,482);
+  \node[text=Sage,fill=BlueTint!65,inner sep=5bp,font=\fontsize{25}{25}\selectfont]
+    at (1269,482) {$d$};
+  \ultraspectrum{0}{1}
+  \ultraspectrum{814}{2}
+  \figtext[Ink]{429}{851}{28}{\textbf{Spectrum barely changes}}
+  \figtext[Sage]{1243}{851}{28}{\textbf{New spectral branches appear}}
+  \fill[Blue] (241,910) circle (4bp);
+  \figtext[Ink]{364}{910}{23}{Original spectrum}
+  \fill[Sage] (671,910) circle (4bp);
+  \figtext[Ink]{810}{910}{23}{With weak impurities}
+  \fill[Gold] (1150,910) circle (5bp);
+  \figtext[Ink]{1321}{910}{23}{Separated induced states}
+  \figtext[Muted]{836}{936}{21}{Computed $40\times40$ cylinder $\cdot$ $t_x=i$, $t_y=0$, $t_{xy}=3$, $u=-2i$, $V=0.01$}
+
+  \draw[Rule,line width=2bp] (50,976) -- (1622,976);
+  \ultraheading{1040}{02}{Distance amplifies a round trip}
+  \figtext[Ink]{836}{1097}{30}{The response must reach the second defect and return}
+
+  % Frequency-domain response. G_ij propagates from site j to site i.
+  \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
+    (65,1140) rectangle (1160,1470);
+  \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
+    (1200,1140) rectangle (1607,1470);
+  \draw[draw=BlueTint,line width=18bp,line cap=round]
+    (265,1260) .. controls (475,1180) and (810,1180) .. (1030,1260);
+  \draw[blue arrow]
+    (265,1260) .. controls (475,1180) and (810,1180) .. (1030,1260);
+  \draw[draw=SageTint,line width=18bp,line cap=round]
+    (1030,1300) .. controls (810,1420) and (475,1420) .. (265,1300);
+  \draw[draw=Sage,line width=3bp,-{Stealth[length=15bp,width=13bp]}]
+    (1030,1300) .. controls (810,1420) and (475,1420) .. (265,1300);
+  \figmath[Blue]{645}{1170}{34}{G_{21}(E)}
+  \figmath[Sage]{645}{1420}{31}{G_{12}(E)}
+  \foreach \x/\j in {235/1,1060/2} {
+    \draw[draw=Sage,fill=SageTint,line width=3bp] (\x,1280) circle (30bp);
+    \fill[Gold] (\x,1280) circle (8bp);
+    \figmath{\x}{1347}{28}{\mathbf r_{\j}}
+  }
+  \figtext[Ink]{645}{1291}{29}{\textbf{A two-defect feedback loop}}
+  \figtext[Muted]{645}{1450}{22}{Arrows denote response through the local lattice}
+
+  % Schematic response scale, not a sampled numerical curve or exact root.
+  \figmath{1403}{1183}{27}{\Lambda(E)=|V|\sqrt{|P_{\leftrightarrow}(E)|}}
+  \draw[time arrow] (1260,1420) -- (1580,1420);
+  \draw[time arrow] (1260,1420) -- (1260,1224);
+  \draw[draw=Muted,dashed,line width=1.5bp] (1260,1320) -- (1568,1320);
+  \figmath[Muted]{1240}{1320}{24}{1}
+  \draw[Blue,line width=4bp,line cap=round]
+    (1278,1407) .. controls (1380,1404) and (1415,1387) .. (1450,1355)
+    .. controls (1495,1314) and (1530,1275) .. (1564,1234);
+  \fill[Gold] (1487,1320) circle (6bp);
+  \figtext[Ink]{1410}{1449}{23}{Larger separation $d$}
+
+  \draw[draw=Sage!45,fill=SageTint,line width=1.5bp,rounded corners=15bp]
+    (65,1511) rectangle (1607,1647);
+  \figmath{836}{1546}{35}{P_{\leftrightarrow}(E)=G_{12}(E)G_{21}(E)}
+  \figmath[Sage]{836}{1596}{32}{|V|\sqrt{|P_{\leftrightarrow}(E)|}\sim1
+    \qquad\Longrightarrow\qquad |V_*|\sim\frac{1}{\sqrt{|P_{\leftrightarrow}(E)|}}}
+  \figtext[Ink]{836}{1666}{27}{In a sensitive geometry, the round-trip response grows and the impurity scale shrinks}
+  \figtext[Muted]{836}{1703}{22}{Off-resonance $E$ $\cdot$ Equal weak potentials $\cdot$ Direction and aspect ratio matter $\cdot$ Response plot schematic}
+
+  \draw[Rule,line width=2bp] (50,1745) -- (1622,1745);
+  \ultraheading{1810}{03}{Two defects create a long-lived channel}
+  \figtext[Ink]{836}{1869}{30}{Induced nonlocal states support repeated wavepacket returns}
+  \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
+    (65,1908) rectangle (970,2280);
+  \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
+    (1015,1908) rectangle (1607,2280);
+
+  % An unwrapped 2D surface; symmetric bonds, no artificial long-range bond.
+  \figtext{517}{1941}{28}{\textbf{A mode connects distant impurities}}
+  \fill[BlueTint!40] (145,1990) rectangle (885,2180);
+  \foreach \x in {145,219,293,367,441,515,589,663,737,811,885} {
+    \draw[Rule,line width=1.5bp] (\x,1990) -- (\x,2180);
+  }
+  \foreach \y in {1990,2037.5,2085,2132.5,2180} {
+    \draw[Rule,line width=1.5bp] (145,\y) -- (885,\y);
+  }
+  \draw[draw=Blue,line width=4bp,-{Stealth[length=14bp,width=13bp]}]
+    (175,2065) .. controls (415,1962) and (650,1962) .. (855,2065);
+  \draw[draw=Sage,line width=4bp,-{Stealth[length=14bp,width=13bp]}]
+    (855,2105) .. controls (650,2210) and (415,2210) .. (175,2105);
+  \foreach \x in {145,885} {
+    \fill[Gold,opacity=.2] (\x,2085) circle (26bp);
+    \draw[draw=Sage,fill=SageTint,line width=3bp] (\x,2085) circle (15bp);
+    \fill[Gold] (\x,2085) circle (5bp);
+  }
+  \foreach \x/\y/\j in {620/2018/1,480/2160/2,310/2040/3} {
+    \fill[BlueTint,opacity=.8] (\x,\y) ellipse (41bp and 22bp);
+    \draw[Blue,line width=3bp]
+      plot[domain=-2:2,samples=35,variable=\q]
+        ({\x+20*\q},{\y-26*exp(-\q*\q)});
+    \figmath[Ink]{\x}{\y+34}{25}{t_{\j}}
+  }
+  \figtext[Ink]{517}{2222}{27}{\textbf{Scattering sends the packet back through the bulk}}
+  \figtext[Muted]{517}{2258}{22}{Successive packet positions $\cdot$ Unwrapped surface $\cdot$ Schematic}
+
+  % Overall norm continues to decay. Revival means repeated slow-decay passages.
+  \draw[Blue,line width=3bp] (1080,1950) -- (1120,1950);
+  \figtext[Ink]{1200}{1950}{24}{One defect}
+  \draw[Sage,line width=3bp] (1350,1950) -- (1390,1950);
+  \figtext[Ink]{1480}{1950}{24}{Two defects}
+  \draw[time arrow] (1090,2215) -- (1570,2215);
+  \draw[time arrow] (1090,2215) -- (1090,1983);
+  \figmath[Ink]{1278}{1997}{26}{\log\|\psi(t)\|^2}
+  \figmath[Ink]{1578}{2236}{27}{t}
+  \draw[Blue,line width=3.5bp,line cap=round]
+    (1105,2020) .. controls (1130,2040) and (1140,2070) .. (1164,2090)
+    .. controls (1185,2095) and (1220,2098) .. (1250,2101)
+    .. controls (1310,2135) and (1430,2184) .. (1547,2208);
+  \draw[Sage,line width=4bp,line cap=round]
+    (1105,2020) .. controls (1130,2040) and (1140,2070) .. (1164,2090)
+    .. controls (1185,2095) and (1220,2098) .. (1250,2101)
+    .. controls (1270,2110) and (1280,2124) .. (1293,2127)
+    .. controls (1314,2130) and (1345,2132) .. (1370,2135)
+    .. controls (1385,2142) and (1395,2152) .. (1409,2155)
+    .. controls (1430,2158) and (1460,2160) .. (1486,2163)
+    .. controls (1504,2171) and (1515,2178) .. (1547,2182);
+  \figtext[Sage]{1410}{2063}{27}{\textbf{Repeated returns}}
+  \figtext[Muted]{1311}{2258}{22}{Schematic decay profile $\cdot$ Norm is not conserved}
+
+  \draw[Rule,line width=2bp] (50,2311) -- (1622,2311);
+  \figtext{836}{2349}{30}{\textbf{Weak local defects $\longrightarrow$ Amplified round trip $\longrightarrow$ Nonlocal bound states}}
+  \figtext[Muted]{836}{2393}{22}{Chang Shu, Kai Zhang \& Kai Sun $\cdot$ arXiv:2409.13623 $\cdot$ Sections II--V}
+\end{tikzpicture}
+\end{document}

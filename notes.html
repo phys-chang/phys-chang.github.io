@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Visual research stories by Chang Shu at the University of Michigan (UMich): SWSSB, Lindbladian TEBD, and quantum trajectories for open quantum systems.">
+  <meta name="description" content="Visual research stories by Chang Shu at the University of Michigan (UMich): SWSSB, non-Hermitian spectral sensitivity, Lindbladian TEBD, and quantum trajectories.">
   <meta name="author" content="Chang Shu">
   <link rel="canonical" href="https://phys-chang.github.io/notes.html">
   <meta property="og:title" content="Visual Stories | Chang Shu, University of Michigan">
@@ -13,7 +13,7 @@
   <meta property="og:site_name" content="Chang Shu">
   <title>Visual Stories | Chang Shu, University of Michigan</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css" integrity="sha384-3rdsX6e5mueWyoweR9NIVmtEsUkokpBT/0ALqKKIBMr9j4qhHkaIkAcGgsE6uVlp" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css?v=home-rs-3">
+  <link rel="stylesheet" href="styles.css?v=research-stories-4">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js" integrity="sha384-QFFtAGzvvj+bfgCGxXJlNZZR1nXEZgvG8tDLCCY1F19xl20WlfTYgguB4VcNdxYk" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
   <script defer src="script.js?v=latex-1"></script>
@@ -215,6 +215,74 @@
             Paper: <a href="https://arxiv.org/abs/2603.06363">Universal Dynamical Scaling of Strong-to-Weak Spontaneous Symmetry Breaking in Open Quantum Systems</a>.
             Illustration based on <a href="https://arxiv.org/html/2603.06363v2">version 2, Sections II–IV and Appendix A</a>.
             Related local-learning viewpoint: <a href="https://arxiv.org/html/2602.11262v2">Unlearnable phases of matter</a>.
+          </p>
+        </article>
+        <article class="research-story" id="ultrasensitivity" aria-labelledby="ultrasensitivity-title">
+          <p class="paper-meta">arXiv:2409.13623 · Non-Hermitian spectral sensitivity</p>
+          <h3 id="ultrasensitivity-title">Two tiny defects, one dramatic response</h3>
+          <p>
+            In our reciprocal two-dimensional non-Hermitian lattice, one very weak defect barely changes the
+            spectrum. Add a second, equally weak defect far away, and new eigenstates can appear far from the
+            original spectrum. Our work traces this strong response to propagation between two distant sites.
+          </p>
+          <p>
+            The effect depends on the system's geometry and the placement of the defects. In a sensitive regime,
+            increasing their separation makes the response stronger, so arbitrarily weak defects can become
+            nonperturbative as the system grows.
+          </p>
+
+          <figure class="wide-figure">
+            <img src="assets/img/ultrasensitivity.svg?v=story-1" width="1672" height="2420" loading="lazy" decoding="async"
+                 alt="A visual story of non-Hermitian spectral sensitivity. One weak impurity leaves the spectrum nearly unchanged; two distant weak impurities create new spectral branches. The reciprocal two-dimensional cylinder is open along x and periodic along y. A Green-function round trip connects the impurities and lowers the sensitivity threshold with distance in a sensitive geometry. The final panel depicts nonlocal bound states and repeated bulk scattering that lets a wavepacket return between the defects.">
+            <figcaption>
+              From weak local defects to a nonlocal spectral response. The spectrum points are computed on a
+              \(40\times40\) cylinder with \(t_x=i\), \(t_y=0\), \(t_{xy}=3\), \(u=-2i\), and two possible
+              onsite defects of strength \(V=0.01\) at \((0,0)\) and \((39,0)\). Gold points highlight
+              induced states separated from the original spectrum. The cylinder drawings, propagation paths,
+              and wavepacket revivals are schematic. The dynamical illustration represents repeated scattering
+              through a channel with slow decay.
+              <a href="assets/img/ultrasensitivity.svg?v=story-1">View the full-size SVG →</a>
+            </figcaption>
+          </figure>
+
+          <p>
+            The Green function measures the response at site \(i\) to a source at site \(j\), evaluated at an
+            energy outside the unperturbed spectrum. Its product in both directions is the <em>forth-back propagator</em>:
+          </p>
+          <div class="method-equation">
+            \[
+              \begin{aligned}
+                G_{ij}(E)&=\langle\mathbf r_i|(E-H_0)^{-1}|\mathbf r_j\rangle,\\
+                \mathcal P_{\leftrightarrow}(E)&=G_{12}(E)G_{21}(E).
+              \end{aligned}
+            \]
+          </div>
+          <p>
+            For equal defect strengths \(V\), the nonlocal response scale is
+            \(|V|\sqrt{|\mathcal P_{\leftrightarrow}(E)|}\). A growing round trip can overwhelm the smallness of
+            each defect; propagation in both directions determines the effect.
+          </p>
+
+          <ol class="method-steps">
+            <li>
+              <h4>Separate the defects</h4>
+              <p>In a sensitive geometry, the round-trip response grows exponentially with distance and the perturbative threshold tends to zero.</p>
+            </li>
+            <li>
+              <h4>Choose the geometry</h4>
+              <p>The cylinder is open along \(x\) and periodic along \(y\). Its aspect ratio \(\alpha=L_x/L_y\) and defect offset \(g=\Delta y/L_x\) control the sensitivity.</p>
+            </li>
+            <li>
+              <h4>Watch the wave return</h4>
+              <p>The defects create nonlocal bound states. In the dynamical example, repeated scattering sends a wavepacket back through the bulk with slow decay.</p>
+            </li>
+          </ol>
+
+          <p class="method-reference">
+            Chang Shu, Kai Zhang &amp; Kai Sun,
+            <a href="https://arxiv.org/abs/2409.13623">Ultra spectral sensitivity and non-local bi-impurity bound states from quasi-long-range non-hermitian skin modes</a>.
+            Illustration based on <a href="https://arxiv.org/html/2409.13623v1">version 1, Sections II–V</a>;
+            <a href="https://arxiv.org/html/2409.13623v1#S6">Methods: Green-function response and sensitivity phase diagram</a>.
           </p>
         </article>
         <p class="read-more"><a href="publications.html">Browse the papers →</a></p>

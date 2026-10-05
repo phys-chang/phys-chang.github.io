@@ -1,0 +1,59 @@
+{
+  "source": "https://arxiv.org/abs/2409.13623",
+  "description": "Independently recomputed finite-size illustration; not source-paper Fig. 1 data",
+  "size": [
+    40,
+    40
+  ],
+  "boundary_conditions": {
+    "x": "open",
+    "y": "periodic"
+  },
+  "parameters": {
+    "tx": "i",
+    "ty": "0",
+    "txy": "3",
+    "u": "-2i",
+    "V": 0.01
+  },
+  "impurity_positions_zero_based": {
+    "one": [
+      [
+        0,
+        0
+      ]
+    ],
+    "two": [
+      [
+        0,
+        0
+      ],
+      [
+        39,
+        0
+      ]
+    ]
+  },
+  "plot": {
+    "width": 550.0,
+    "height": 220.0,
+    "real_limits": [
+      -6.5,
+      6.5
+    ],
+    "imaginary_limits": [
+      -4.2,
+      0.2
+    ],
+    "y_direction": "down"
+  },
+  "validation": {
+    "small_matrix_spectrum_max_error": 3.9331364521694443e-14,
+    "small_matrix_green_max_error": 3.332114363192298e-16,
+    "full_matrix_clean_nearest_error": 4.346525461574483e-11,
+    "one_impurity_max_nearest_distance": 2.6789051515673567e-05,
+    "two_impurity_max_nearest_distance": 0.783168459282808,
+    "two_impurity_eigenvalues_distance_above_0_15": 20,
+    "induced_state_max_secular_residual": 2.5918305489426578e-12
+  }
+}
