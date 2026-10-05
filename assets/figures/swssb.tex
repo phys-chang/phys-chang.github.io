@@ -49,7 +49,7 @@
 
 \begin{document}
 \begin{tikzpicture}[x=1bp,y=-1bp]
-  \figbackground{1672}{4140}
+  \figbackground{1672}{4400}
   \figtext[Ink]{836}{85}{38}{Strong-to-weak spontaneous symmetry breaking}
 
   % 0. Finite-state symmetry definitions, before discussing spontaneous order.
@@ -91,23 +91,26 @@
 
   % 1. Three complementary views of the ZZ-dephasing steady states.
   % Z arrows are individual measurement outcomes, not an ensemble
-  % decomposition. Abstract matrix sheets do not depict aligned physical
-  % copies: the green loop denotes the nonlinear two-copy overlap.
+  % decomposition. The nonlinear view adopts the Stinespring purification
+  % and coherent Bell-postselection construction of Sala et al.,
+  % arXiv:2405.02402v1, Sec. III.1 / Fig. 3 / Appendix A.
   \storyheading{190}{01}{What is SWSSB?}
   \figtext{836}{252}{36}{\textbf{Global SWSSB: hidden long-range order}}
   \figtext[Ink]{836}{303}{27}{Whole-state nonlinear correlations reveal order without ordinary spin alignment}
 
   \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
-    (65,335) rectangle (793,696);
+    (65,335) rectangle (793,876);
   \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
-    (879,335) rectangle (1607,696);
+    (879,335) rectangle (1607,876);
   \figtext{429}{365}{34}{\textbf{Ordinary view}}
   \figtext{1243}{365}{34}{\textbf{Nonlinear view}}
+  \figtext[Ink]{429}{409}{27}{One copy: trace out the environment}
+  \figtext[Ink]{1243}{409}{27}{Two copies: keep the system and environment}
 
   % Each framed, staggered card is an independent Z-measurement shot
   % from a fresh preparation of the same 1D state. Cards are not rows of
   % a 2D lattice and there are no connections between separate shots.
-  \foreach \y/\dx/\shot in {416/0/1,468/21/2,520/-12/3} {
+  \foreach \y/\dx/\shot in {466/0/1,534/21/2,602/-12/3} {
     \fill[Blue,opacity=.045,rounded corners=11bp]
       ({110+\dx},{\y-19}) rectangle ({736+\dx},{\y+25});
     \draw[draw=Rule,fill=Ice!35,line width=1.4bp,rounded corners=11bp]
@@ -116,46 +119,71 @@
     \draw[Rule,line width=3bp] ({260+\dx},\y) -- ({690+\dx},\y);
   }
   \foreach \x/\s in {260/1,346/-1,432/1,518/1,604/-1,690/1} {
-    \zoutcome{\x}{416}{\s}
+    \zoutcome{\x}{466}{\s}
   }
   \foreach \x/\s in {260/-1,346/1,432/-1,518/-1,604/1,690/-1} {
-    \zoutcome{\x+21}{468}{\s}
+    \zoutcome{\x+21}{534}{\s}
   }
   \foreach \x/\s in {260/1,346/1,432/-1,518/1,604/1,690/-1} {
-    \zoutcome{\x-12}{520}{\s}
+    \zoutcome{\x-12}{602}{\s}
   }
-  \figtext[Ink]{429}{559}{23}{Independent $Z$-measurement shots of a 1D chain}
+  \figtext[Ink]{429}{659}{24}{Independent $Z$-measurement shots of a 1D chain}
+  \figmath[Ink]{429}{710}{28}{\rho=\operatorname{Tr}_{E}\lvert\Psi\rangle\langle\Psi\rvert}
 
-  % Abstract density-matrix sheets with local operator insertions.
-  \foreach \dy in {0,67} {
-    \fill[Blue,opacity=.08]
-      (948,{424+\dy}) -- (1490,{404+\dy}) --
-      (1573,{451+\dy}) -- (1031,{472+\dy}) -- cycle;
-    \draw[draw=Blue!70,fill=BlueTint!60,line width=2.5bp,line join=round]
-      (944,{420+\dy}) -- (1486,{400+\dy}) --
-      (1569,{447+\dy}) -- (1027,{468+\dy}) -- cycle;
-    \foreach \x in {1025,1105,1185,1265,1345,1425} {
-      \draw[Rule,line width=1.2bp]
-        (\x,{417+\dy}) -- ({\x+61},{453+\dy});
-    }
-    \draw[Rule,line width=1.2bp]
-      (984,{433+\dy}) -- (1527,{414+\dy});
-    \figmath[Blue]{1543}{435+\dy}{31}{\rho}
+  % Separate system--environment purifications, not a 2D physical lattice.
+  % Blue circles are system sites; gold diamonds are bond ancillas.
+  % The second purification is conjugated, as required by Eq. (20).
+  \foreach \ytop/\ybottom in {433/538,579/684} {
+    \draw[draw=Rule,fill=Ice!35,line width=1.5bp,rounded corners=14bp]
+      (1007,\ytop) rectangle (1543,\ybottom);
   }
-  \draw[Sage,line width=4bp,line cap=round,line join=round]
-    (1008,436) .. controls (1065,381) and (1451,381) .. (1508,436)
-    -- (1508,503) .. controls (1408,530) and (1108,530) .. (1008,503)
-    -- cycle;
-  \foreach \x in {1008,1508} {
-    \foreach \y in {436,503} {
-      \draw[draw=Sage,fill=SageTint,line width=3bp] (\x,\y) circle (8bp);
+  \figtext[Ink]{1275}{451}{23}{Copy 1: $\lvert\Psi\rangle_{SE}$}
+  \figtext[Ink]{1275}{666}{23}{Copy 2: $\lvert\Psi^*\rangle_{SE}$}
+  \figtext[Blue]{948}{482}{23}{System 1}
+  \figtext[Gold!80!Navy]{964}{525}{22}{Env. 1}
+  \figtext[Gold!80!Navy]{964}{592}{22}{Env. 2}
+  \figtext[Blue]{948}{636}{23}{System 2}
+  \foreach \ys/\ye in {482/525,636/592} {
+    \draw[Rule,line width=2.5bp] (1055,\ys) -- (1495,\ys);
+    \foreach \x in {1099,1187,1275,1363,1451} {
+      \draw[Gold!40!Rule,line width=1.5bp]
+        ({\x-44},\ys) -- (\x,\ye) -- ({\x+44},\ys);
+    }
+    \foreach \x in {1055,1143,1231,1319,1407,1495} {
+      \draw[draw=Blue,fill=BlueTint,line width=2.5bp] (\x,\ys) circle (12bp);
     }
   }
-  \figmath[Gold!80!Navy]{980}{471}{27}{Z_i}
-  \figmath[Gold!80!Navy]{1536}{471}{27}{Z_j}
-  \figtext[Sage]{1243}{551}{25}{R\'enyi-2 diagnostic in this example}
+  % A coherent |Phi+><Phi+| projection on EVERY ancilla pair.
+  % These connectors denote postselection, not dynamical lattice bonds.
+  \foreach \x in {1099,1187,1275,1363,1451} {
+    \fill[Sage,opacity=.08,rounded corners=12bp]
+      ({\x-15},517) rectangle ({\x+15},600);
+    \draw[Sage,line width=3bp] (\x,525) -- (\x,592);
+    \draw[draw=Sage,fill=SageTint,line width=2bp,rounded corners=7bp]
+      ({\x-22},544) rectangle ({\x+22},574);
+    \figmath[Sage]{\x}{559}{22}{\Phi^+}
+    \foreach \y in {525,592} {
+      \draw[draw=Gold!80!Navy,fill=Gold!20,line width=2.5bp]
+        (\x,{\y-10}) -- ({\x+10},\y) -- (\x,{\y+10}) -- ({\x-10},\y) -- cycle;
+    }
+  }
+  \figtext[Sage]{1243}{713}{25}{Postselect every environment pair into a Bell state}
 
-  % Matching miniature correlation plots make the hidden order explicit.
+  % The ordered objects are paired system OPERATORS, not aligned spins.
+  \draw[draw=Sage,fill=SageTint,line width=2bp,rounded corners=12bp]
+    (919,741) rectangle (1157,793);
+  \draw[draw=Sage,fill=SageTint,line width=2bp,rounded corners=12bp]
+    (1329,741) rectangle (1567,793);
+  \figmath[Sage]{1038}{767}{27}{O_i=Z_i^{(1)}Z_i^{(2)}}
+  \figmath[Sage]{1448}{767}{27}{O_j=Z_j^{(1)}Z_j^{(2)}}
+  \draw[Sage,line width=4bp,line cap=round]
+    (1157,759) .. controls (1200,733) and (1286,733) .. (1329,759);
+  \figtext[Sage]{1243}{779}{21}{Correlated}
+  \figmath[Sage]{1243}{827}{31}{R_2(i,j)=\langle O_iO_j\rangle_{\mathrm{post}}=1}
+  \figtext[Sage]{1243}{858}{27}{Hidden long-range order}
+
+  % Ordinary correlations remain absent in the traced-out system.
+  \begin{scope}[shift={(0,180)}]
   \draw[time arrow] (177,614) -- (699,614);
   \draw[time arrow] (177,614) -- (177,574);
   \draw[Blue,line width=4bp,line cap=round] (190,611) -- (675,611);
@@ -163,14 +191,6 @@
   \figmath{699}{637}{25}{r}
   \figmath[Blue]{429}{647}{35}{C_Z(r>0)=0}
   \figtext[Ink]{429}{678}{27}{No ordinary order}
-
-  \draw[time arrow] (991,614) -- (1513,614);
-  \draw[time arrow] (991,614) -- (991,574);
-  \draw[Sage,line width=4bp,line cap=round] (1004,582) -- (1489,582);
-  \figmath[Sage]{961}{577}{27}{1}
-  \figmath{1513}{637}{25}{r}
-  \figmath[Sage]{1243}{647}{35}{R_2(r>0)=1}
-  \figtext[Sage]{1243}{678}{27}{Hidden long-range order}
 
   % A single charged operator maps the even ensemble to the odd ensemble.
   % A separated pair permutes configurations within the original ensemble.
@@ -189,16 +209,19 @@
   % The original fidelity-based global definition is distinct from an
   % arbitrary Renyi diagnostic. Both detect order in this exact example.
   \draw[draw=Rule,fill=BlueTint!65,line width=1.5bp,rounded corners=15bp]
-    (50,850) rectangle (1622,930);
+    (50,850) rectangle (1622,1010);
   \figtext{836}{875}{27}{Global SWSSB reference: Lessa et al.}
   \figtext[Ink]{836}{908}{24}{\textit{Strong-to-Weak Spontaneous Symmetry Breaking in Mixed Quantum States} $\cdot$ PRX Quantum \textbf{6}, 010344 (2025)}
+  \figtext{836}{949}{25}{Purification perspective: Sala, Gopalakrishnan, Oshikawa \& You $\cdot$ Phys. Rev. B 110, 155150 (2024)}
+  \figtext[Ink]{836}{984}{24}{\textit{Spontaneous strong symmetry breaking in open systems: Purification perspective} $\cdot$ arXiv:2405.02402}
+  \end{scope}
 
   % Compare the SAME charge-changing probe inside the window in two phases.
   % Left: product |+x> versus Z_i|+x>, perfectly distinguishable near i.
   % Right: rho_+ versus Z_i rho_+ Z_i = rho_-, equal on every proper patch.
   % Nonzero local fidelity is the general local SWSSB condition; equality
   % is the fully scrambled fixed-point illustration, not a universal claim.
-  \begin{scope}[shift={(0,115)}]
+  \begin{scope}[shift={(0,375)}]
   \figtext{836}{881}{36}{\textbf{Local SWSSB: charge learnability}}
   \figtext[Ink]{836}{927}{29}{Flip the global charge inside the window. Can local measurements tell?}
   \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
@@ -272,7 +295,7 @@
   % Theorem II.1 proves global => local; Sec. II.3 supplies local-only
   % examples. ETH refers to locally thermal pure eigenstates with no
   % ordinary symmetry breaking, in the limit 1 << ell_A << L.
-  \begin{scope}[shift={(0,370)}]
+  \begin{scope}[shift={(0,630)}]
   \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
     (65,1448) rectangle (1607,1720);
   \figtext{836}{1477}{31}{\textbf{How local and global SWSSB are related}}
@@ -294,7 +317,7 @@
   \end{scope}
 
   % 2. Large waterfall plot, following the user's reference composition.
-  \begin{scope}[shift={(0,1270)}]
+  \begin{scope}[shift={(0,1530)}]
   \draw[Rule,line width=2bp] (50,861) -- (1622,861);
   \storyheading{926}{02}{Watch the nonlinear order spread}
   \figtext[Ink]{836}{984}{30}{Each ridge is a later snapshot of the same chain}

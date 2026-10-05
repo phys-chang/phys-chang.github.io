@@ -44,7 +44,7 @@ FIGURES = {
     ),
     "swssb": (
         1672,
-        4140,
+        4400,
         "Universal dynamical scaling of strong-to-weak symmetry breaking",
         "A large introductory visual story. Panel 00 explains strong and weak "
         "finite-state symmetry using framed X-basis mixture components. Strong "
@@ -63,7 +63,12 @@ FIGURES = {
         "In the pair-dephasing steady state, ordinary Z-spin measurements have zero "
         "correlation. Separate staggered cards labelled Shot 1, Shot 2 and Shot 3 "
         "show independent measurements of fresh copies of the same 1D state. "
-        "A nonlinear two-copy overlap reveals long-range "
+        "The nonlinear view follows Sala, Gopalakrishnan, Oshikawa and You, "
+        "Phys. Rev. B 110, 155150 (2024), arXiv:2405.02402: two "
+        "system-environment purifications, with the second complex conjugated, "
+        "undergo coherent Bell postselection on every corresponding environment pair. "
+        "Correlations of paired system operators in the normalized postselected "
+        "state give the Renyi-2 correlator. A nonlinear two-copy overlap reveals long-range "
         "Renyi-2 order. A single X-basis spin flip changes the ensemble, while "
         "two distant flips preserve it. A local-learnability view contrasts "
         "unbroken strong symmetry and SWSSB using the same charge flip inside "
@@ -189,7 +194,7 @@ def build_swssb_preview():
     root = ET.parse(DESTINATION / "swssb.svg").getroot()
     x, y, width, height = map(float, root.attrib["viewBox"].split())
     canvas_width, canvas_height = FIGURES["swssb"][:2]
-    crop_top, crop_height = 2848, 941
+    crop_top, crop_height = 3108, 941
     root.attrib.update(
         width=str(canvas_width),
         height=str(crop_height),
