@@ -17,6 +17,7 @@ The research narrative is written with **open quantum systems** and **many-body 
 - `assets/img/open-system.svg` — vector spin-chain schematic with gain and loss channels
 - `assets/img/lindbladian-tebd.svg` — vector methodology illustration, based on the author's slides
 - `assets/img/quantum-trajectories.svg` — vector Monte Carlo wavefunction illustration, based on the DQPT supplement
+- `assets/img/swssb.svg` — larger introductory research story with analytic waterfall profiles, based on arXiv:2603.06363v2
 - `assets/figures/*.tex` — editable LaTeX/TikZ sources with a shared visual style
 - `scripts/build_figures.py` — rebuilds the self-contained SVGs with outlined LaTeX glyphs
 - `assets/img/README.md` — figure conventions, scientific references, and build instructions

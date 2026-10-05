@@ -127,7 +127,49 @@
             <p>Each work unfolds as an illustrated story, from the question that started it to the physics we uncovered.</p>
           </div>
         </div>
-        <p>Illustrated stories of individual papers are coming soon.</p>
+        <article class="research-story" id="swssb" aria-labelledby="swssb-title">
+          <p class="paper-meta">2026 · Strong-to-weak spontaneous symmetry breaking</p>
+          <h3 id="swssb-title">How hidden order spreads</h3>
+          <p>
+            A mixed quantum state can carry long-range order that ordinary correlations miss. Strong-to-weak spontaneous
+            symmetry breaking (SWSSB) reveals this order through nonlinear quantities such as the Rényi-2 correlator.
+          </p>
+          <p>
+            The illustration starts with a simple example: pair dephasing lets a local region's parity fluctuate while
+            preserving global parity. Its expanding correlation profiles show how hidden order reaches farther through
+            the chain as time passes.
+          </p>
+
+          <figure class="wide-figure">
+            <img src="assets/img/swssb.svg" width="1672" height="2140" loading="lazy" decoding="async"
+                 alt="An introductory visual story of SWSSB. Pair dephasing turns fixed local parity into an invariant local ensemble with fluctuating parity, while global parity remains conserved. A large waterfall plot shows analytic Rényi-2 profiles broadening with time in the pair-dephasing example, even though ordinary Z-spin correlations remain zero. A smaller comparison shows exponential Z2 growth and algebraic U(1) growth. Finite chains develop system-spanning nonlinear order when its range reaches the chain length; true long-range order in an infinite chain emerges asymptotically.">
+            <figcaption>
+              What SWSSB means, how its nonlinear order spreads, and how symmetry controls the growth rate.
+              The spin configurations are schematic; the waterfall profiles are calculated from the pair-dephasing example
+              in Appendix A. <a href="assets/img/swssb.svg">View the full-size SVG →</a>
+            </figcaption>
+          </figure>
+
+          <ol class="method-steps">
+            <li>
+              <h4>Find the hidden order</h4>
+              <p>In the pair-dephasing example, the Rényi-2 correlation range grows while ordinary correlations between separated \(Z\) spins stay zero.</p>
+            </li>
+            <li>
+              <h4>Follow the symmetry</h4>
+              <p>We find exponential growth for \(\mathbb{Z}_2\), including gapless models, and algebraic growth for \(U(1)\): near ballistic at finite filling, diffusive in the single-particle or single-hole limit.</p>
+            </li>
+            <li>
+              <h4>Reach across a finite chain</h4>
+              <p>The effective onset occurs when \(\xi_{R_2}\sim L\). In an infinite chain, true long-range order appears only asymptotically.</p>
+            </li>
+          </ol>
+
+          <p class="method-reference">
+            Paper: <a href="https://arxiv.org/abs/2603.06363">Universal Dynamical Scaling of Strong-to-Weak Spontaneous Symmetry Breaking in Open Quantum Systems</a>.
+            Illustration based on <a href="https://arxiv.org/html/2603.06363v2">version 2, Sections II–IV and Appendix A</a>.
+          </p>
+        </article>
         <p class="read-more"><a href="publications.html">Browse the papers →</a></p>
       </section>
     </main>

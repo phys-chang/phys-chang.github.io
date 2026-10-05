@@ -39,6 +39,18 @@ FIGURES = {
         "square root of gamma g times sigma plus and square root of gamma l "
         "times sigma minus.",
     ),
+    "swssb": (
+        1672,
+        2140,
+        "Universal dynamical scaling of strong-to-weak symmetry breaking",
+        "A large introductory visual story: pair dephasing turns sharp local "
+        "parity into fluctuating local parity while global parity stays fixed. "
+        "A vector waterfall of analytic Renyi-2 correlation profiles shows "
+        "nonlinear order spreading across a chain even though ordinary Z-spin "
+        "correlations stay zero in this example. A compact comparison shows "
+        "exponential Z2 growth and algebraic U(1) growth, with near-ballistic "
+        "finite filling and diffusive single-particle or single-hole limits.",
+    ),
 }
 
 

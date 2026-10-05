@@ -5,6 +5,9 @@ All research figures displayed on the website are self-contained SVGs. Their lin
 - `lindbladian-tebd.svg` — methodology figure in `../../notes.html`, also previewed on the homepage. It illustrates density-matrix vectorization, an MPS, alternating local channel gates, and SVD truncation, based on Chang Shu's slides. The convention is `\partial_t |\rho\rangle\!\rangle = \mathcal{L}|\rho\rangle\!\rangle`, so `\mathcal{E}(\Delta t) = \exp(\Delta t\,\mathcal{L})`. Method reference: [Zwolak & Vidal (2004)](https://arxiv.org/abs/cond-mat/0406440).
 - `quantum-trajectories.svg` — Monte Carlo wavefunction figure in `../../notes.html`. Its source is [Section IV of the DQPT supplement](https://arxiv.org/pdf/2509.03570v2#page=13), Eqs. (50)–(57) and the numerical steps that follow. It shows discrete-time no-jump/jump sampling, normalization, and the average of pure-state projectors. The histories are schematic, not simulation data.
 - `open-system.svg` — homepage spin-chain schematic, preserving the gain and loss channels of the original illustration. Its operator labels are now genuine LaTeX vector paths.
+- `swssb.svg` — the first Research Story, based on [arXiv:2603.06363v2](https://arxiv.org/html/2603.06363v2). Its larger 1672 × 2140 canvas gives most of the space to explaining SWSSB. The local/global parity cartoon and waterfall use the `H=0`, `L_j=\sqrt{\gamma}Z_jZ_{j+1}` example of Appendix A, starting from the all-`+x` state. The late-time state reached from this initial condition is `\rho_{ss}=(I+\prod_jX_j)/2^L`: global parity stays fixed, while each proper local block is maximally mixed and invariant under conjugation by its local parity. The displayed X-basis rows are representative configurations, not an exhaustive ensemble.
+
+The SWSSB waterfall contains analytic profiles `R_2(r,t)=[\tanh(2\gamma t)]^{|r|}` at `\gamma t=0.30,0.45,\ldots,1.20`, with signed displacement `r=i-j` and range `\xi=-1/\ln[\tanh(2\gamma t)]`. Ordinary separated-site `Z` correlations vanish in this introductory example. These profiles are not TEBD simulation data. The small final comparison summarizes the exponential `\mathbb{Z}_2` and algebraic `U(1)` growth established in Sections III–IV. Do not apply the zero ordinary-correlation claim to every model: the original gapless `\mathbb{Z}_2` example has an intermediate SWSSB window before its eventual GHZ state also develops conventional order. Onset times are effective finite-size scales; the infinite-chain transition is asymptotic.
 
 ## Editing and rebuilding
 
@@ -22,7 +25,7 @@ The earlier Imagegen PNGs and `.prompt.txt` files remain as design references. `
 
 Use `lindbladian-tebd.svg` and the shared TikZ styles as the reference for new figures.
 
-- Match the landscape framing, margins, pale ice-blue background, and navy serif typography. Methodology figures use a 1672 × 941 canvas; simple schematics can use a shorter canvas.
+- Match the margins, pale ice-blue background, and navy serif typography. Methodology figures use a 1672 × 941 landscape canvas; simple schematics can use a shorter canvas, and research stories can use a taller canvas to explain unfamiliar concepts.
 - Use blue outlines and pale-blue fills for states, sage-green operators, and small gold arrows or jump markers. Keep line widths, corner radii, and subtle shadows consistent.
 - Keep numbered panel badges, pale-blue separators, label sizes, and the bottom process strip consistent where the scientific narrative uses them.
 - Use a modest descriptive subtitle; put the method or paper title in the webpage heading.
