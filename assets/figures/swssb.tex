@@ -20,7 +20,7 @@
 
 \begin{document}
 \begin{tikzpicture}[x=1bp,y=-1bp]
-  \figbackground{1672}{2500}
+  \figbackground{1672}{2680}
   \figtext[Ink]{836}{85}{38}{Strong-to-weak spontaneous symmetry breaking}
 
   % 1. Three complementary views of the ZZ-dephasing steady states.
@@ -113,56 +113,72 @@
   \figtext[Sage]{1351}{773}{31}{Same ensemble}
   \figtext[Sage]{1243}{810}{25}{Two distant flips: $R_2=1$}
 
-  % Opposite global charge sectors have identical proper marginals.
-  % Neutral circles denote sites, not spin measurement outcomes.
-  % Arrows extract a patch; they do not evolve between charge sectors.
+  % Compare the SAME charge-changing probe inside the window in two phases.
+  % Left: product |+x> versus Z_i|+x>, perfectly distinguishable near i.
+  % Right: rho_+ versus Z_i rho_+ Z_i = rho_-, equal on every proper patch.
+  % Nonzero local fidelity is the general local SWSSB condition; equality
+  % is the fully scrambled fixed-point illustration, not a universal claim.
+  \figtext{836}{881}{34}{\textbf{Local learnability: where is the charge information?}}
+  \figtext[Ink]{836}{927}{29}{Flip the global charge inside the window. Can local measurements tell?}
   \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
-    (65,849) rectangle (1607,1187);
-  \figtext{836}{882}{34}{\textbf{Local information view}}
-  \figtext[Ink]{836}{925}{29}{Global charge cannot be learned from a local patch}
+    (65,958) rectangle (793,1320);
+  \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
+    (879,958) rectangle (1607,1320);
+  \figtext{429}{990}{31}{\textbf{Strong symmetry unbroken}}
+  \figtext[Sage]{1243}{990}{31}{\textbf{SWSSB: charge scrambled}}
 
-  \foreach \y/\sector/\charge in {987/+/+1,1084/-/-1} {
-    \figmath{136}{\y}{32}{\rho_{\sector}}
-    \fill[BlueTint,rounded corners=12bp]
-      (192,{\y-24}) rectangle (318,{\y+24});
-    \figmath[Ink]{255}{\y}{29}{q=\charge}
-    \fill[SageTint,rounded corners=12bp]
-      (448,{\y-26}) rectangle (622,{\y+26});
-    \draw[Muted!55,line width=3bp] (340,\y) -- (860,\y);
-    \foreach \x in {340,405,665,730,795,860} {
-      \draw[draw=Muted!60,fill=BlueTint!55,line width=2bp]
-        (\x,\y) circle (11bp);
+  \foreach \dx in {0,814} {
+    \foreach \y/\charge in {1060/+1,1152/-1} {
+      \fill[BlueTint,rounded corners=12bp]
+        ({95+\dx},{\y-23}) rectangle ({215+\dx},{\y+23});
+      \figmath[Ink]{155+\dx}{\y}{27}{q=\charge}
+      \fill[SageTint,rounded corners=12bp]
+        ({345+\dx},{\y-27}) rectangle ({585+\dx},{\y+27});
+      \draw[draw=Sage!65,line width=2bp,rounded corners=12bp]
+        ({345+\dx},{\y-27}) rectangle ({585+\dx},{\y+27});
+      \draw[Rule,line width=3bp] ({285+\dx},\y) -- ({735+\dx},\y);
     }
-    \draw[Sage,line width=3bp] (470,\y) -- (600,\y);
-    \foreach \x in {470,535,600} {
+    \figmath[Sage]{465+\dx}{1021}{23}{A}
+    \draw[draw=Gold,line width=4bp,-{Stealth[length=12bp,width=12bp]}]
+      ({465+\dx},1092) -- ({465+\dx},1118);
+    \figmath[Gold!80!Navy]{511+\dx}{1105}{27}{Z_i}
+  }
+
+  % X eigenstates, explicitly marked +/-, not Z-measurement snapshots.
+  \foreach \y in {1060,1152} {
+    \foreach \x in {285,375,555,645,735} {
+      \draw[draw=Blue,fill=BlueTint,line width=2.5bp] (\x,\y) circle (17bp);
+      \figmath[Blue]{\x}{\y}{25}{+}
+    }
+  }
+  \draw[draw=Blue,fill=BlueTint,line width=2.5bp] (465,1060) circle (17bp);
+  \figmath[Blue]{465}{1060}{25}{+}
+  \draw[draw=Gold!80!Navy,fill=Gold!15,line width=3bp] (465,1152) circle (17bp);
+  \figmath[Gold!80!Navy]{465}{1152}{25}{-}
+  \figtext[Ink]{429}{1207}{25}{Product-state spins in the $X$ basis}
+  \figtext{429}{1251}{30}{\textbf{Charge change is locally detectable}}
+  \figmath[Blue]{429}{1293}{31}{\rho_A\perp\sigma_A,\qquad F_A=0}
+
+  % Identical neutral site symbols represent identical local mixed states.
+  \foreach \y in {1060,1152} {
+    \foreach \x in {1099,1459,1549} {
+      \draw[draw=Muted!65,fill=BlueTint!60,line width=2.5bp]
+        (\x,\y) circle (17bp);
+    }
+    \draw[Sage,line width=3bp] (1189,\y) -- (1369,\y);
+    \foreach \x in {1189,1279,1369} {
       \draw[draw=Sage,fill=SageTint,line width=2.5bp]
-        (\x,\y) circle (11bp);
+        (\x,\y) circle (17bp);
     }
-    \draw[draw=Sage,line width=2bp,rounded corners=12bp]
-      (448,{\y-26}) rectangle (622,{\y+26});
-    \figmath[Sage]{535}{\y+43}{25}{A}
   }
-  \draw[gold arrow]
-    (626,962) .. controls (764,933) and (901,968) .. (967,1014);
-  \draw[gold arrow]
-    (626,1108) .. controls (764,1138) and (901,1103) .. (967,1056);
-
-  \draw[draw=Sage!55,fill=SageTint!60,line width=1.5bp,rounded corners=15bp]
-      (985,960) rectangle (1560,1168);
-  \figtext[Sage]{1272}{987}{28}{\textbf{Identical local state}}
-  \draw[Sage,line width=3bp] (1212,1025) -- (1332,1025);
-  \foreach \x in {1212,1272,1332} {
-    \draw[draw=Sage,fill=SageTint,line width=2.5bp]
-      (\x,1025) circle (11bp);
-  }
-  \figmath[Sage]{1380}{1025}{27}{A}
-  \figmath{1272}{1074}{34}{\rho_A^+=\rho_A^-=\frac{I_A}{2^{|A|}}}
-  \figtext[Ink]{1272}{1140}{24}{No local measurement can distinguish the charges}
-  \figmath[Ink]{487}{1157}{26}{\rho_\pm=(I\pm Q)/2^L,\qquad Q=\prod\nolimits_j X_j}
-  \figtext[Muted]{836}{1207}{22}{Illustrative $ZZ$-dephasing steady states $\cdot$ $A$ excludes at least one site $\cdot$ Global parity stays conserved}
+  \figtext[Ink]{1243}{1207}{25}{Opposite global charges, identical local states}
+  \figtext[Sage]{1243}{1251}{30}{\textbf{Global charge is locally hidden}}
+  \figmath[Sage]{1243}{1293}{31}{\rho_A=\sigma_A,\qquad F_A=1}
+  \figmath[Ink]{836}{1347}{26}{F_A=F(\rho_A,\sigma_A),\qquad \sigma=Z_i\rho Z_i,\quad i\in A}
+  \figtext[Muted]{836}{1379}{22}{Illustrative product and fully scrambled states $\cdot$ $A$ excludes at least one site $\cdot$ $Q=\prod\nolimits_j X_j$}
 
   % 2. Large waterfall plot, following the user's reference composition.
-  \begin{scope}[shift={(0,360)}]
+  \begin{scope}[shift={(0,540)}]
   \draw[Rule,line width=2bp] (50,861) -- (1622,861);
   \storyheading{926}{02}{Watch the nonlinear order spread}
   \figtext[Ink]{836}{984}{30}{Each ridge is a later snapshot of the same chain}
