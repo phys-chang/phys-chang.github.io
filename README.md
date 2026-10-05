@@ -10,6 +10,8 @@ The research narrative is written with **open quantum systems** and **many-body 
 - `publications.html` — selected publications with topic filters
 - `papers.html` — redirect alias to `publications.html`
 - `notes.html` — Visual Stories: numerical methodology first, followed by illustrated stories of individual papers
+- `robots.txt` — allows crawling and advertises the sitemap
+- `sitemap.xml` — canonical URLs of the three main content pages
 - `styles.css` — typography, layout, responsive styling; pale-blue palette with line separators rather than boxed cards
 - `script.js` — LaTeX rendering, topic filter, and dynamic footer year
 - `publications.bib` — BibTeX entries for selected papers
@@ -43,3 +45,16 @@ The KaTeX CSS and JavaScript come from pinned CDN URLs with integrity checks. Wh
 ## Deploy on GitHub Pages
 
 Upload these files to a repository named `username.github.io`, or to any repository with Pages enabled. In GitHub, go to **Settings → Pages**, choose the branch/folder, and save.
+
+## Search visibility
+
+The main pages use explicit Chang Shu / University of Michigan titles and descriptions, canonical URLs, and social preview metadata. The homepage includes `ProfilePage` / `Person` JSON-LD linking the same identity to the U-M Physics profile, Google Scholar, and ORCID. Keep these details aligned with the visible biography. The homepage canonical is `https://phys-chang.github.io/`, including when it is visited as `index.html`.
+
+To connect Google Search Console:
+
+1. Add the **URL-prefix** property `https://phys-chang.github.io/` in [Search Console](https://search.google.com/search-console/).
+2. Choose **HTML tag** verification. Add the exact account-specific `<meta name="google-site-verification" content="…">` provided by Google inside the homepage `<head>`, publish it, then click **Verify**. Keep the verification tag afterward. No placeholder verification tag is published.
+3. Use **URL Inspection** on the homepage and select **Request indexing**.
+4. Submit `https://phys-chang.github.io/sitemap.xml` under **Sitemaps**. Update the sitemap if new standalone content pages are added; omit the legacy `papers.html` redirect.
+
+Also link the homepage from the U-M Physics profile, Google Scholar's Homepage field, and ORCID's website links. These account or department changes are separate from repository changes. Search Console is needed to confirm Google's actual indexed status; a live-page check or an unrelated search engine result cannot establish it. Crawling can take days to weeks, and neither metadata nor an indexing request guarantees a ranking. See Google's [ownership verification](https://support.google.com/webmasters/answer/9008080?hl=en) and [recrawl guidance](https://developers.google.com/search/docs/crawling-indexing/ask-google-to-recrawl).
