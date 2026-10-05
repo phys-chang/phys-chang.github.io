@@ -7,7 +7,7 @@
   <meta name="author" content="Chang Shu">
   <title>Chang Shu — Visual Stories</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css" integrity="sha384-3rdsX6e5mueWyoweR9NIVmtEsUkokpBT/0ALqKKIBMr9j4qhHkaIkAcGgsE6uVlp" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css?v=latex-1">
+  <link rel="stylesheet" href="styles.css?v=home-rs-3">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js" integrity="sha384-QFFtAGzvvj+bfgCGxXJlNZZR1nXEZgvG8tDLCCY1F19xl20WlfTYgguB4VcNdxYk" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
   <script defer src="script.js?v=latex-1"></script>
@@ -137,22 +137,37 @@
           </p>
           <p>
             In the pair-dephasing example, the same mixed state has no ordinary \(Z\)-spin correlation but does have
-            long-range nonlinear order. Panel 01 compares these views and illustrates a simple test: one spin flip
-            changes the ensemble, while two distant flips preserve it. A third viewpoint contrasts unbroken strong
-            symmetry with SWSSB: apply a charge-changing flip inside a local window, then ask whether that window
+            long-range nonlinear order. Panel 01 first illustrates <strong>global SWSSB</strong> through
+            whole-state nonlinear correlations: one spin flip changes the ensemble, while two distant flips preserve it.
+            The <strong>local SWSSB</strong> view asks a different question: apply a charge-changing flip inside a local window,
+            then ask whether that window
             can detect the change. The product-state reference reveals it; the fully scrambled SWSSB state hides it
             in global correlations. The waterfall then follows the spreading order.
           </p>
 
+          <aside class="story-references" aria-label="Global and local SWSSB references">
+            <p>
+              <strong>Global SWSSB</strong>
+              Lessa et al., <a href="https://doi.org/10.1103/PRXQuantum.6.010344">Strong-to-Weak Spontaneous Symmetry Breaking in Mixed Quantum States</a>.<br>
+              PRX Quantum 6, 010344 (2025) · <a href="https://arxiv.org/abs/2405.03639">arXiv:2405.03639</a>
+            </p>
+            <p>
+              <strong>Local SWSSB</strong>
+              Divi, Lessa &amp; Wang, <a href="https://arxiv.org/html/2605.28967v1">Local Strong-to-Weak Spontaneous Symmetry Breaking</a>.<br>
+              <a href="https://arxiv.org/abs/2605.28967">arXiv:2605.28967</a> · Local one-point fidelity and charge learnability
+            </p>
+          </aside>
+
           <figure class="wide-figure">
-            <img src="assets/img/swssb.svg?v=local-global-venn-7" width="1672" height="3040" loading="lazy" decoding="async"
-                 alt="An introductory visual story of SWSSB. In panel 01's ordinary view, three separate staggered shot cards show independent Z-measurement outcomes of the same 1D state. A nonlinear view shows long-range two-copy correlation. A local-learnability comparison applies the same charge-changing Z_i flip inside patch A: local measurements detect it in an unbroken product-state reference, while every proper patch remains identical at the fully scrambled SWSSB fixed point. A nested-set Venn diagram then places global SWSSB inside the larger local SWSSB set for fidelity-based definitions. Locally thermal pure ETH states without ordinary symmetry breaking sit in the local-only region. Local SWSSB is necessary but not sufficient for global SWSSB. The waterfall shows analytic nonlinear correlation profiles broadening with time; the final comparison shows exponential Z2 and algebraic U(1) growth.">
+            <img src="assets/img/swssb.svg?v=global-local-definitions-8" width="1672" height="3260" loading="lazy" decoding="async"
+                 alt="An introductory visual story of SWSSB. The first block of panel 01 is labelled Global SWSSB: hidden long-range order, with the Lessa et al. PRX Quantum reference in a prominent band. Separate staggered shot cards show independent Z-measurement outcomes of the same 1D state; a nonlinear view shows long-range two-copy correlation. The next block is labelled Local SWSSB: charge learnability, with a prominent reference to Divi, Lessa and Wang. The same charge-changing Z_i flip inside patch A is locally detectable in an unbroken product-state reference, while every proper patch remains identical at the fully scrambled local SWSSB fixed point. A nested-set Venn diagram places global SWSSB inside local SWSSB for fidelity-based definitions, with locally thermal pure ETH states in the local-only region. The waterfall shows analytic nonlinear correlation profiles broadening with time; the final comparison shows exponential Z2 and algebraic U(1) growth.">
             <figcaption>
               What SWSSB means, how its nonlinear order spreads, and how symmetry controls the growth rate.
-              Panel 01's separate shot cards show independent measurements of fresh copies of the same 1D state.
-              It contrasts these ordinary measurements with a two-copy overlap of that steady state; the green loop
-              represents the Rényi-2 correlation. Its third view applies the same local charge flip in an unbroken
-              product-state reference and a fully scrambled SWSSB state. In the local formulation, the fidelity
+              Panel 01's first block is <strong>global SWSSB</strong>: separate shot cards show independent
+              measurements of fresh copies of the same 1D state, contrasted with a two-copy Rényi-2 diagnostic.
+              In this exact example, both the Rényi-2 and global fidelity correlators detect the hidden order;
+              they are distinct diagnostics in general. Its <strong>local SWSSB</strong> block applies the same local
+              charge flip in an unbroken product-state reference and a fully scrambled SWSSB state. In the local formulation, the fidelity
               \(F_A=F(\rho_A,\sigma_A)\) tends to zero in an unbroken strong phase and stays nonzero in local SWSSB
               as the window around the flip grows. The illustration shows the exact limiting values zero and one.
               The nested-set diagram shows that, for fidelity-based definitions, local SWSSB is necessary but not
@@ -161,7 +176,7 @@
               <a href="https://arxiv.org/html/2605.28967v1#S2">Theorem II.1 and Section II.3</a>.
               The measurement snapshots, matrix sheets, and patch diagrams are schematic; the waterfall profiles
               are calculated from the pair-dephasing example in Appendix A.
-              <a href="assets/img/swssb.svg?v=local-global-venn-7">View the full-size SVG →</a>
+              <a href="assets/img/swssb.svg?v=global-local-definitions-8">View the full-size SVG →</a>
             </figcaption>
           </figure>
 
@@ -183,8 +198,7 @@
           <p class="method-reference">
             Paper: <a href="https://arxiv.org/abs/2603.06363">Universal Dynamical Scaling of Strong-to-Weak Spontaneous Symmetry Breaking in Open Quantum Systems</a>.
             Illustration based on <a href="https://arxiv.org/html/2603.06363v2">version 2, Sections II–IV and Appendix A</a>.
-            Local learnability viewpoint: <a href="https://arxiv.org/html/2605.28967v1">Local Strong-to-Weak Spontaneous Symmetry Breaking</a>
-            and <a href="https://arxiv.org/html/2602.11262v2">Unlearnable phases of matter</a>.
+            Related local-learning viewpoint: <a href="https://arxiv.org/html/2602.11262v2">Unlearnable phases of matter</a>.
           </p>
         </article>
         <p class="read-more"><a href="publications.html">Browse the papers →</a></p>

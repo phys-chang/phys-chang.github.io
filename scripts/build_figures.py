@@ -44,10 +44,14 @@ FIGURES = {
     ),
     "swssb": (
         1672,
-        3040,
+        3260,
         "Universal dynamical scaling of strong-to-weak symmetry breaking",
         "A large introductory visual story with three complementary views of "
-        "SWSSB. In the pair-dephasing steady state, ordinary Z-spin measurements have zero "
+        "SWSSB. Panel 01 explicitly separates global SWSSB, measured by whole-state "
+        "nonlinear correlations, from local SWSSB, measured by fidelity in a local window. "
+        "Prominent citation bands credit Lessa et al., PRX Quantum 6, 010344 (2025), "
+        "for the global formulation and Divi, Lessa and Wang, arXiv:2605.28967, "
+        "for the local formulation. In the pair-dephasing steady state, ordinary Z-spin measurements have zero "
         "correlation. Separate staggered cards labelled Shot 1, Shot 2 and Shot 3 "
         "show independent measurements of fresh copies of the same 1D state. "
         "A nonlinear two-copy overlap reveals long-range "
@@ -59,7 +63,7 @@ FIGURES = {
         "A nested-set diagram for fidelity definitions places global SWSSB "
         "strictly inside local SWSSB. Locally thermal pure ETH states without "
         "ordinary symmetry breaking illustrate local order without global order. "
-        "Global parity stays conserved. "
+        "Global parity stays conserved in the pair-dephasing example. "
         "A vector waterfall of analytic Renyi-2 correlation profiles shows "
         "nonlinear order spreading across a chain even though ordinary Z-spin "
         "correlations stay zero in this example. A compact comparison shows "
@@ -149,6 +153,34 @@ def build(name):
         target = DESTINATION / f"{name}.svg"
         ET.ElementTree(root).write(target, encoding="utf-8", xml_declaration=True)
         print(f"{target.relative_to(ROOT)}: {target.stat().st_size:,} bytes, vector paths")
+    if name == "swssb":
+        build_swssb_preview()
+
+
+def build_swssb_preview():
+    """Give panel 02 its own intrinsic viewport for the homepage preview."""
+    root = ET.parse(DESTINATION / "swssb.svg").getroot()
+    x, y, width, height = map(float, root.attrib["viewBox"].split())
+    canvas_width, canvas_height = FIGURES["swssb"][:2]
+    crop_top, crop_height = 1968, 941
+    root.attrib.update(
+        width=str(canvas_width),
+        height=str(crop_height),
+        viewBox=(
+            f"{x:.5f} {y + crop_top * height / canvas_height:.5f} "
+            f"{width:.5f} {crop_height * width / canvas_width:.5f}"
+        ),
+        overflow="hidden",
+    )
+    root.find(f"{{{SVG_NS}}}title").text = "Watch SWSSB nonlinear order spread"
+    root.find(f"{{{SVG_NS}}}desc").text = (
+        "Panel 02 of the SWSSB visual story. Blue analytic Renyi-2 profiles "
+        "broaden with time, showing the spreading range of hidden order in "
+        "the pair-dephasing example while ordinary Z-spin correlations remain zero."
+    )
+    target = DESTINATION / "swssb-spreading-preview.svg"
+    ET.ElementTree(root).write(target, encoding="utf-8", xml_declaration=True)
+    print(f"{target.relative_to(ROOT)}: {target.stat().st_size:,} bytes, vector panel crop")
 
 
 def main():

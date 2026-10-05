@@ -20,7 +20,7 @@
 
 \begin{document}
 \begin{tikzpicture}[x=1bp,y=-1bp]
-  \figbackground{1672}{3040}
+  \figbackground{1672}{3260}
   \figtext[Ink]{836}{85}{38}{Strong-to-weak spontaneous symmetry breaking}
 
   % 1. Three complementary views of the ZZ-dephasing steady states.
@@ -28,8 +28,8 @@
   % decomposition. Abstract matrix sheets do not depict aligned physical
   % copies: the green loop denotes the nonlinear two-copy overlap.
   \storyheading{190}{01}{What is SWSSB?}
-  \figtext{836}{252}{36}{\textbf{Hidden order without ordinary spin alignment}}
-  \figtext[Ink]{836}{303}{29}{Ordinary correlations, nonlinear order, and locally hidden charge}
+  \figtext{836}{252}{36}{\textbf{Global SWSSB: hidden long-range order}}
+  \figtext[Ink]{836}{303}{27}{Whole-state nonlinear correlations reveal order without ordinary spin alignment}
 
   \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
     (65,335) rectangle (793,696);
@@ -87,7 +87,7 @@
   }
   \figmath[Gold!80!Navy]{980}{471}{27}{Z_i}
   \figmath[Gold!80!Navy]{1536}{471}{27}{Z_j}
-  \figtext[Sage]{1243}{551}{25}{R\'enyi-2 correlation from two-copy overlap}
+  \figtext[Sage]{1243}{551}{25}{R\'enyi-2 diagnostic in this example}
 
   % Matching miniature correlation plots make the hidden order explicit.
   \draw[time arrow] (177,614) -- (699,614);
@@ -120,19 +120,27 @@
   \figtext[Sage]{1351}{773}{31}{Same ensemble}
   \figtext[Sage]{1243}{810}{25}{Two distant flips: $R_2=1$}
 
+  % The original fidelity-based global definition is distinct from an
+  % arbitrary Renyi diagnostic. Both detect order in this exact example.
+  \draw[draw=Rule,fill=BlueTint!65,line width=1.5bp,rounded corners=15bp]
+    (50,850) rectangle (1622,930);
+  \figtext{836}{875}{27}{\textbf{Global SWSSB reference: Lessa et al.}}
+  \figtext[Ink]{836}{908}{24}{\textit{Strong-to-Weak Spontaneous Symmetry Breaking in Mixed Quantum States} $\cdot$ PRX Quantum \textbf{6}, 010344 (2025)}
+
   % Compare the SAME charge-changing probe inside the window in two phases.
   % Left: product |+x> versus Z_i|+x>, perfectly distinguishable near i.
   % Right: rho_+ versus Z_i rho_+ Z_i = rho_-, equal on every proper patch.
   % Nonzero local fidelity is the general local SWSSB condition; equality
   % is the fully scrambled fixed-point illustration, not a universal claim.
-  \figtext{836}{881}{34}{\textbf{Local learnability: where is the charge information?}}
+  \begin{scope}[shift={(0,115)}]
+  \figtext{836}{881}{36}{\textbf{Local SWSSB: charge learnability}}
   \figtext[Ink]{836}{927}{29}{Flip the global charge inside the window. Can local measurements tell?}
   \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
     (65,958) rectangle (793,1320);
   \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
     (879,958) rectangle (1607,1320);
   \figtext{429}{990}{31}{\textbf{Strong symmetry unbroken}}
-  \figtext[Sage]{1243}{990}{31}{\textbf{SWSSB: charge scrambled}}
+  \figtext[Sage]{1243}{990}{31}{\textbf{Local SWSSB: charge scrambled}}
 
   \foreach \dx in {0,814} {
     \foreach \y/\charge in {1060/+1,1152/-1} {
@@ -183,12 +191,18 @@
   \figmath[Sage]{1243}{1293}{31}{\rho_A=\sigma_A,\qquad F_A=1}
   \figmath[Ink]{836}{1347}{26}{F_A=F(\rho_A,\sigma_A),\qquad \sigma=Z_i\rho Z_i,\quad i\in A}
   \figtext[Muted]{836}{1379}{22}{Illustrative product and fully scrambled states $\cdot$ $A$ excludes at least one site $\cdot$ $Q=\prod\nolimits_j X_j$}
-  \figtext[Muted]{836}{1411}{22}{Refs: Divi, Lessa \& Wang, arXiv:2605.28967 $\cdot$ Kumar et al., arXiv:2602.11262}
+  \draw[draw=Sage!45,fill=SageTint,line width=1.5bp,rounded corners=15bp]
+    (50,1404) rectangle (1622,1490);
+  \figtext{836}{1431}{27}{\textbf{Local SWSSB reference: Divi, Lessa \& Wang}}
+  \figtext[Ink]{836}{1466}{25}{\textit{Local Strong-to-Weak Spontaneous Symmetry Breaking} $\cdot$ arXiv:2605.28967}
+  \figtext[Muted]{836}{1514}{22}{Related local-learning perspective: Kumar et al., arXiv:2602.11262}
+  \end{scope}
 
   % Strict containment for FIDELITY-defined local/global SWSSB.
   % Theorem II.1 proves global => local; Sec. II.3 supplies local-only
   % examples. ETH refers to locally thermal pure eigenstates with no
   % ordinary symmetry breaking, in the limit 1 << ell_A << L.
+  \begin{scope}[shift={(0,220)}]
   \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
     (65,1448) rectangle (1607,1720);
   \figtext{836}{1477}{31}{\textbf{How local and global SWSSB are related}}
@@ -207,9 +221,10 @@
   \figtext[Ink]{1243}{1653}{28}{but not sufficient for global order}
   \figtext[Muted]{1243}{1692}{22}{Set areas are schematic}
   \figtext[Muted]{836}{1737}{21}{Fidelity definitions $\cdot$ Ordinary symmetry unbroken $\cdot$ $1\ll\ell_A\ll L$ $\cdot$ Divi, Lessa \& Wang: Theorem II.1 and Sec. II.3}
+  \end{scope}
 
   % 2. Large waterfall plot, following the user's reference composition.
-  \begin{scope}[shift={(0,900)}]
+  \begin{scope}[shift={(0,1120)}]
   \draw[Rule,line width=2bp] (50,861) -- (1622,861);
   \storyheading{926}{02}{Watch the nonlinear order spread}
   \figtext[Ink]{836}{984}{30}{Each ridge is a later snapshot of the same chain}
