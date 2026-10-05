@@ -20,16 +20,16 @@
 
 \begin{document}
 \begin{tikzpicture}[x=1bp,y=-1bp]
-  \figbackground{1672}{2140}
+  \figbackground{1672}{2500}
   \figtext[Ink]{836}{85}{38}{Strong-to-weak spontaneous symmetry breaking}
 
-  % 1. The same ZZ-dephasing steady state viewed with two diagnostics.
+  % 1. Three complementary views of the ZZ-dephasing steady states.
   % Z arrows are individual measurement outcomes, not an ensemble
   % decomposition. Abstract matrix sheets do not depict aligned physical
   % copies: the green loop denotes the nonlinear two-copy overlap.
   \storyheading{190}{01}{What is SWSSB?}
   \figtext{836}{252}{36}{\textbf{Hidden order without ordinary spin alignment}}
-  \figtext[Ink]{836}{303}{29}{The same mixed state, probed in two different ways}
+  \figtext[Ink]{836}{303}{29}{Ordinary correlations, nonlinear order, and locally hidden charge}
 
   \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
     (65,335) rectangle (793,696);
@@ -112,9 +112,57 @@
   \draw[gold arrow] (1070,773) -- (1129,773);
   \figtext[Sage]{1351}{773}{31}{Same ensemble}
   \figtext[Sage]{1243}{810}{25}{Two distant flips: $R_2=1$}
-  \figtext[Muted]{836}{847}{22}{Illustrative $ZZ$-dephasing steady state $\cdot$ Global parity stays conserved}
+
+  % Opposite global charge sectors have identical proper marginals.
+  % Neutral circles denote sites, not spin measurement outcomes.
+  % Arrows extract a patch; they do not evolve between charge sectors.
+  \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
+    (65,849) rectangle (1607,1187);
+  \figtext{836}{882}{34}{\textbf{Local information view}}
+  \figtext[Ink]{836}{925}{29}{Global charge cannot be learned from a local patch}
+
+  \foreach \y/\sector/\charge in {987/+/+1,1084/-/-1} {
+    \figmath{136}{\y}{32}{\rho_{\sector}}
+    \fill[BlueTint,rounded corners=12bp]
+      (192,{\y-24}) rectangle (318,{\y+24});
+    \figmath[Ink]{255}{\y}{29}{q=\charge}
+    \fill[SageTint,rounded corners=12bp]
+      (448,{\y-26}) rectangle (622,{\y+26});
+    \draw[Muted!55,line width=3bp] (340,\y) -- (860,\y);
+    \foreach \x in {340,405,665,730,795,860} {
+      \draw[draw=Muted!60,fill=BlueTint!55,line width=2bp]
+        (\x,\y) circle (11bp);
+    }
+    \draw[Sage,line width=3bp] (470,\y) -- (600,\y);
+    \foreach \x in {470,535,600} {
+      \draw[draw=Sage,fill=SageTint,line width=2.5bp]
+        (\x,\y) circle (11bp);
+    }
+    \draw[draw=Sage,line width=2bp,rounded corners=12bp]
+      (448,{\y-26}) rectangle (622,{\y+26});
+    \figmath[Sage]{535}{\y+43}{25}{A}
+  }
+  \draw[gold arrow]
+    (626,962) .. controls (764,933) and (901,968) .. (967,1014);
+  \draw[gold arrow]
+    (626,1108) .. controls (764,1138) and (901,1103) .. (967,1056);
+
+  \draw[draw=Sage!55,fill=SageTint!60,line width=1.5bp,rounded corners=15bp]
+      (985,960) rectangle (1560,1168);
+  \figtext[Sage]{1272}{987}{28}{\textbf{Identical local state}}
+  \draw[Sage,line width=3bp] (1212,1025) -- (1332,1025);
+  \foreach \x in {1212,1272,1332} {
+    \draw[draw=Sage,fill=SageTint,line width=2.5bp]
+      (\x,1025) circle (11bp);
+  }
+  \figmath[Sage]{1380}{1025}{27}{A}
+  \figmath{1272}{1074}{34}{\rho_A^+=\rho_A^-=\frac{I_A}{2^{|A|}}}
+  \figtext[Ink]{1272}{1140}{24}{No local measurement can distinguish the charges}
+  \figmath[Ink]{487}{1157}{26}{\rho_\pm=(I\pm Q)/2^L,\qquad Q=\prod\nolimits_j X_j}
+  \figtext[Muted]{836}{1207}{22}{Illustrative $ZZ$-dephasing steady states $\cdot$ $A$ excludes at least one site $\cdot$ Global parity stays conserved}
 
   % 2. Large waterfall plot, following the user's reference composition.
+  \begin{scope}[shift={(0,360)}]
   \draw[Rule,line width=2bp] (50,861) -- (1622,861);
   \storyheading{926}{02}{Watch the nonlinear order spread}
   \figtext[Ink]{836}{984}{30}{Each ridge is a later snapshot of the same chain}
@@ -198,5 +246,6 @@
   }
   \figtext[Muted]{836}{2053}{23}{Pair-dephasing example: Appendix A $\cdot$ Symmetry-dependent scaling: Sections III--IV}
   \figtext[Muted]{836}{2095}{26}{Finite chains: onset at $\xi_{R_2}\sim L$. Infinite chains: long-range order emerges only as $t\to\infty$.}
+  \end{scope}
 \end{tikzpicture}
 \end{document}

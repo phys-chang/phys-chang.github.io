@@ -41,13 +41,16 @@ FIGURES = {
     ),
     "swssb": (
         1672,
-        2140,
+        2500,
         "Universal dynamical scaling of strong-to-weak symmetry breaking",
-        "A large introductory visual story with two views of the same "
-        "pair-dephasing steady state: ordinary Z-spin measurements have zero "
+        "A large introductory visual story with three complementary views of "
+        "SWSSB. In the pair-dephasing steady state, ordinary Z-spin measurements have zero "
         "correlation, while a nonlinear two-copy overlap reveals long-range "
         "Renyi-2 order. A single X-basis spin flip changes the ensemble, while "
-        "two distant flips preserve it. Global parity stays conserved. "
+        "two distant flips preserve it. A local-information view compares "
+        "opposite global charge sectors: every proper patch has the same "
+        "reduced state, so no local measurement distinguishes the charges. "
+        "Global parity stays conserved. "
         "A vector waterfall of analytic Renyi-2 correlation profiles shows "
         "nonlinear order spreading across a chain even though ordinary Z-spin "
         "correlations stay zero in this example. A compact comparison shows "
