@@ -44,7 +44,7 @@ FIGURES = {
     ),
     "swssb": (
         1672,
-        2720,
+        3040,
         "Universal dynamical scaling of strong-to-weak symmetry breaking",
         "A large introductory visual story with three complementary views of "
         "SWSSB. In the pair-dephasing steady state, ordinary Z-spin measurements have zero "
@@ -56,6 +56,9 @@ FIGURES = {
         "unbroken strong symmetry and SWSSB using the same charge flip inside "
         "a local window: a product-state reference reveals the change locally, "
         "while the fully scrambled SWSSB state hides it from every proper patch. "
+        "A nested-set diagram for fidelity definitions places global SWSSB "
+        "strictly inside local SWSSB. Locally thermal pure ETH states without "
+        "ordinary symmetry breaking illustrate local order without global order. "
         "Global parity stays conserved. "
         "A vector waterfall of analytic Renyi-2 correlation profiles shows "
         "nonlinear order spreading across a chain even though ordinary Z-spin "

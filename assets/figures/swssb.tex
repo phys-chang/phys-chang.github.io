@@ -20,7 +20,7 @@
 
 \begin{document}
 \begin{tikzpicture}[x=1bp,y=-1bp]
-  \figbackground{1672}{2720}
+  \figbackground{1672}{3040}
   \figtext[Ink]{836}{85}{38}{Strong-to-weak spontaneous symmetry breaking}
 
   % 1. Three complementary views of the ZZ-dephasing steady states.
@@ -185,8 +185,31 @@
   \figtext[Muted]{836}{1379}{22}{Illustrative product and fully scrambled states $\cdot$ $A$ excludes at least one site $\cdot$ $Q=\prod\nolimits_j X_j$}
   \figtext[Muted]{836}{1411}{22}{Refs: Divi, Lessa \& Wang, arXiv:2605.28967 $\cdot$ Kumar et al., arXiv:2602.11262}
 
+  % Strict containment for FIDELITY-defined local/global SWSSB.
+  % Theorem II.1 proves global => local; Sec. II.3 supplies local-only
+  % examples. ETH refers to locally thermal pure eigenstates with no
+  % ordinary symmetry breaking, in the limit 1 << ell_A << L.
+  \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
+    (65,1448) rectangle (1607,1720);
+  \figtext{836}{1477}{31}{\textbf{How local and global SWSSB are related}}
+  \draw[draw=Blue,fill=BlueTint!65,line width=3bp]
+    (480,1607) ellipse (340bp and 96bp);
+  \figtext[Blue]{460}{1542}{31}{\textbf{Local SWSSB}}
+  \draw[draw=Sage,fill=SageTint,line width=3bp]
+    (620,1622) ellipse (170bp and 55bp);
+  \figtext[Sage]{620}{1622}{30}{\textbf{Global SWSSB}}
+  \figtext[Ink]{313}{1595}{25}{Local only}
+  \fill[Gold] (205,1640) circle (5bp);
+  \figtext[Ink]{313}{1640}{22}{Locally thermal\\pure states (ETH)}
+
+  \figmath{1243}{1552}{32}{\text{Global SWSSB}\subsetneq\text{Local SWSSB}}
+  \figtext{1243}{1613}{30}{\textbf{Local order is necessary}}
+  \figtext[Ink]{1243}{1653}{28}{but not sufficient for global order}
+  \figtext[Muted]{1243}{1692}{22}{Set areas are schematic}
+  \figtext[Muted]{836}{1737}{21}{Fidelity definitions $\cdot$ Ordinary symmetry unbroken $\cdot$ $1\ll\ell_A\ll L$ $\cdot$ Divi, Lessa \& Wang: Theorem II.1 and Sec. II.3}
+
   % 2. Large waterfall plot, following the user's reference composition.
-  \begin{scope}[shift={(0,580)}]
+  \begin{scope}[shift={(0,900)}]
   \draw[Rule,line width=2bp] (50,861) -- (1622,861);
   \storyheading{926}{02}{Watch the nonlinear order spread}
   \figtext[Ink]{836}{984}{30}{Each ridge is a later snapshot of the same chain}
