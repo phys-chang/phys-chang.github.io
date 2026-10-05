@@ -44,16 +44,23 @@ FIGURES = {
     ),
     "swssb": (
         1672,
-        3360,
+        4140,
         "Universal dynamical scaling of strong-to-weak symmetry breaking",
-        "A large introductory visual story with three complementary views of "
-        "SWSSB. Panel 01 explicitly separates global SWSSB, measured by whole-state "
+        "A large introductory visual story. Panel 00 explains strong and weak "
+        "finite-state symmetry using framed X-basis mixture components. Strong "
+        "symmetry has one fixed global parity charge; weak-only symmetry mixes "
+        "different charge sectors without coherence between them. Strong symmetry "
+        "also implies weak symmetry. Nonlinear SWSSB order can develop while a "
+        "finite system stays in one fixed charge sector. "
+        "Panel 01 explicitly separates global SWSSB, measured by whole-state "
         "nonlinear correlations, from local SWSSB, measured by fidelity in a local window. "
         "Prominent citation bands credit Lessa et al., PRX Quantum 6, 010344 (2025), "
         "for the global formulation and Divi, Lessa and Wang, arXiv:2605.28967, "
         "for the local formulation. Related references credit Carolyn Zhang, arXiv:2605.29113, "
         "for local fidelity diagnostics, and Tang, Kattel and J. H. Pixley, arXiv:2606.02713, "
-        "for mean-field trajectory diagnostics. In the pair-dephasing steady state, ordinary Z-spin measurements have zero "
+        "for mean-field trajectory diagnostics. Jong Yeon Lee, arXiv:2605.05288, "
+        "is cited for charge scrambling and its conditional relation to nonlinear SWSSB order. "
+        "In the pair-dephasing steady state, ordinary Z-spin measurements have zero "
         "correlation. Separate staggered cards labelled Shot 1, Shot 2 and Shot 3 "
         "show independent measurements of fresh copies of the same 1D state. "
         "A nonlinear two-copy overlap reveals long-range "
@@ -182,7 +189,7 @@ def build_swssb_preview():
     root = ET.parse(DESTINATION / "swssb.svg").getroot()
     x, y, width, height = map(float, root.attrib["viewBox"].split())
     canvas_width, canvas_height = FIGURES["swssb"][:2]
-    crop_top, crop_height = 2068, 941
+    crop_top, crop_height = 2848, 941
     root.attrib.update(
         width=str(canvas_width),
         height=str(crop_height),

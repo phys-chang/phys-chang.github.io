@@ -13,7 +13,7 @@
   <meta property="og:site_name" content="Chang Shu">
   <title>Visual Stories | Chang Shu, University of Michigan</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.css" integrity="sha384-3rdsX6e5mueWyoweR9NIVmtEsUkokpBT/0ALqKKIBMr9j4qhHkaIkAcGgsE6uVlp" crossorigin="anonymous">
-  <link rel="stylesheet" href="styles.css?v=research-stories-4">
+  <link rel="stylesheet" href="styles.css?v=reference-block-5">
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/katex.min.js" integrity="sha384-QFFtAGzvvj+bfgCGxXJlNZZR1nXEZgvG8tDLCCY1F19xl20WlfTYgguB4VcNdxYk" crossorigin="anonymous"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/katex@0.19.0/dist/contrib/auto-render.min.js" integrity="sha384-bjyGPfbij8/NDKJhSGZNP/khQVgtHUE5exjm4Ydllo42FwIgYsdLO2lXGmRBf5Mz" crossorigin="anonymous"></script>
   <script defer src="script.js?v=latex-1"></script>
@@ -143,7 +143,8 @@
           </p>
           <p>
             In the pair-dephasing example, the same mixed state has no ordinary \(Z\)-spin correlation but does have
-            long-range nonlinear order. Panel 01 first illustrates <strong>global SWSSB</strong> through
+            long-range nonlinear order. Panel 00 introduces <strong>strong and weak symmetry</strong>:
+            a fixed global charge sector versus a mixture of sectors. Panel 01 then illustrates <strong>global SWSSB</strong> through
             whole-state nonlinear correlations: one spin flip changes the ensemble, while two distant flips preserve it.
             The <strong>local SWSSB</strong> view asks a different question: apply a charge-changing flip inside a local window,
             then ask whether that window
@@ -151,34 +152,17 @@
             in global correlations. The waterfall then follows the spreading order.
           </p>
 
-          <aside class="story-references" aria-label="SWSSB definitions and local diagnostic references">
-            <p>
-              <strong>Global SWSSB</strong>
-              Lessa et al., <a href="https://doi.org/10.1103/PRXQuantum.6.010344">Strong-to-Weak Spontaneous Symmetry Breaking in Mixed Quantum States</a>.<br>
-              PRX Quantum 6, 010344 (2025) · <a href="https://arxiv.org/abs/2405.03639">arXiv:2405.03639</a>
-            </p>
-            <p>
-              <strong>Local SWSSB</strong>
-              Divi, Lessa &amp; Wang, <a href="https://arxiv.org/html/2605.28967v1">Local Strong-to-Weak Spontaneous Symmetry Breaking</a>.<br>
-              <a href="https://arxiv.org/abs/2605.28967">arXiv:2605.28967</a> · Local one-point fidelity and charge learnability
-            </p>
-            <p>
-              <strong>Local fidelity diagnostics</strong>
-              Carolyn Zhang, <a href="https://arxiv.org/abs/2605.29113">Local diagnostics for strong-to-weak spontaneous symmetry breaking and non-equilibrium phase transitions</a>.<br>
-              arXiv:2605.29113 · Marginal fidelity correlators on local regions
-            </p>
-            <p>
-              <strong>Local mean-field diagnostics</strong>
-              Yicheng Tang, Pradip Kattel &amp; J. H. Pixley, <a href="https://arxiv.org/abs/2606.02713">A mean-field description of strong-to-weak symmetry breaking in the monitored Bose-Hubbard model</a>.<br>
-              arXiv:2606.02713 (v2) · Trajectory-averaged local order in Gutzwiller mean field
-            </p>
-          </aside>
-
           <figure class="wide-figure">
-            <img src="assets/img/swssb.svg?v=local-references-9" width="1672" height="3360" loading="lazy" decoding="async"
-                 alt="An introductory visual story of SWSSB. The first block of panel 01 is labelled Global SWSSB: hidden long-range order, with the Lessa et al. PRX Quantum reference in a prominent band. Separate staggered shot cards show independent Z-measurement outcomes of the same 1D state; a nonlinear view shows long-range two-copy correlation. The next block is labelled Local SWSSB: charge learnability, with a prominent reference to Divi, Lessa and Wang, alongside local fidelity diagnostics by Carolyn Zhang and local mean-field diagnostics by Tang, Kattel and Pixley. The same charge-changing Z_i flip inside patch A is locally detectable in an unbroken product-state reference, while every proper patch remains identical at the fully scrambled local SWSSB fixed point. A nested-set Venn diagram places global SWSSB inside local SWSSB for fidelity-based definitions, with locally thermal pure ETH states in the local-only region. The waterfall shows analytic nonlinear correlation profiles broadening with time; the final comparison shows exponential Z2 and algebraic U(1) growth.">
+            <img src="assets/img/swssb.svg?v=symmetry-intro-11" width="1672" height="4140" loading="lazy" decoding="async"
+                 alt="An introductory visual story of SWSSB. Panel 00 contrasts strong symmetry, whose X-basis ensemble components all have global parity charge plus one, with weak-only symmetry, which mixes plus-one and minus-one charge sectors. Separate framed rows are mixture components, with no bonds between rows. Strong symmetry also implies weak symmetry; nonlinear SWSSB order can develop while the finite state keeps a fixed global charge. Panel 01 separates global hidden long-range order from local charge learnability, with citation bands including Jong Yeon Lee on charge scrambling. Independent Z-measurement shot cards of the same 1D state are contrasted with nonlinear two-copy correlation. The same charge-changing Z_i flip inside a local patch is detectable in a product-state reference and hidden at the scrambled fixed point. A nested-set diagram places global inside local fidelity SWSSB. The waterfall shows nonlinear correlation profiles broadening with time; the final comparison shows exponential Z2 and algebraic U(1) growth.">
             <figcaption>
               What SWSSB means, how its nonlinear order spreads, and how symmetry controls the growth rate.
+              Panel 00 defines symmetry for a finite mixed state using \(Q=\prod_jX_j\):
+              strong symmetry has \(Q\rho_{\mathrm s}=q\rho_{\mathrm s}\) with one definite charge,
+              whereas weak symmetry requires \(Q\rho_{\mathrm w}Q^\dagger=\rho_{\mathrm w}\).
+              The weak-only example mixes charge sectors. Each framed row is an \(X\)-basis ensemble component,
+              and its charge is the product of the displayed signs. A fixed-charge state can still develop
+              SWSSB through its thermodynamic-limit nonlinear correlations.
               Panel 01's first block is <strong>global SWSSB</strong>: separate shot cards show independent
               measurements of fresh copies of the same 1D state, contrasted with a two-copy Rényi-2 diagnostic.
               In this exact example, both the Rényi-2 and global fidelity correlators detect the hidden order;
@@ -192,7 +176,7 @@
               <a href="https://arxiv.org/html/2605.28967v1#S2">Theorem II.1 and Section II.3</a>.
               The measurement snapshots, matrix sheets, and patch diagrams are schematic; the waterfall profiles
               are calculated from the pair-dephasing example in Appendix A.
-              <a href="assets/img/swssb.svg?v=local-references-9">View the full-size SVG →</a>
+              <a href="assets/img/swssb.svg?v=symmetry-intro-11">View the full-size SVG →</a>
             </figcaption>
           </figure>
 

@@ -660,31 +660,6 @@ main > .section-block:first-child {
   color: var(--muted);
 }
 
-.story-references {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 1.2rem;
-  margin-top: 1.35rem;
-  padding: 1rem 1.2rem;
-  border: 1px solid var(--line-strong);
-  border-radius: 0.5rem;
-  background: var(--accent-soft);
-}
-
-.story-references p {
-  min-width: 0;
-  margin-bottom: 0;
-  color: var(--muted);
-  font-size: 0.98rem;
-  line-height: 1.5;
-}
-
-.story-references strong {
-  display: block;
-  margin-bottom: 0.35rem;
-  color: var(--ink);
-}
-
 .method-entry + .method-entry {
   margin-top: 2.1rem;
   padding-top: 2.1rem;
@@ -782,7 +757,6 @@ main > .section-block:first-child {
 
   .intro-grid,
   .home-stories-grid,
-  .story-references,
   .theme-grid,
   .split-block,
   .two-column,

@@ -18,10 +18,76 @@
     (#1,{#2+8*#3}) -- (#1,{#2-8*#3});
 }
 
+% Distinct classical-mixture components in the X basis, not measurement shots.
+% The Z2 charge is the product of the four displayed X eigenvalues.
+\newcommand{\symcomponent}[5]{
+  \draw[draw=Rule,fill=Ice!35,line width=1.5bp,rounded corners=12bp]
+    ({125+#1},{#2-26}) rectangle ({743+#1},{#2+26});
+  \figtext[Ink]{196+#1}{#2}{21}{Component #3}
+  \draw[Rule,line width=3bp] ({290+#1},#2) -- ({524+#1},#2);
+  \foreach \s [count=\n from 0] in {#4} {
+    \ifnum\s<0\relax
+      \draw[draw=Gold!80!Navy,fill=Gold!18,line width=2.5bp]
+        ({290+78*\n+#1},#2) circle (17bp);
+      \figmath[Gold!80!Navy]{290+78*\n+#1}{#2}{27}{-}
+    \else
+      \draw[draw=Blue,fill=BlueTint,line width=2.5bp]
+        ({290+78*\n+#1},#2) circle (17bp);
+      \figmath[Blue]{290+78*\n+#1}{#2}{27}{+}
+    \fi
+  }
+  \ifnum#5<0\relax
+    \draw[draw=Gold!75!Navy,fill=Gold!15,line width=2bp,rounded corners=9bp]
+      ({593+#1},{#2-19}) rectangle ({727+#1},{#2+19});
+    \figmath[Gold!80!Navy]{660+#1}{#2}{27}{q=-1}
+  \else
+    \draw[draw=Sage,fill=SageTint,line width=2bp,rounded corners=9bp]
+      ({593+#1},{#2-19}) rectangle ({727+#1},{#2+19});
+    \figmath[Sage]{660+#1}{#2}{27}{q=+1}
+  \fi
+}
+
 \begin{document}
 \begin{tikzpicture}[x=1bp,y=-1bp]
-  \figbackground{1672}{3360}
+  \figbackground{1672}{4140}
   \figtext[Ink]{836}{85}{38}{Strong-to-weak spontaneous symmetry breaking}
+
+  % 0. Finite-state symmetry definitions, before discussing spontaneous order.
+  % Strong support lies within one Q sector. A weak-only mixture has both
+  % sectors and no coherence between them; it is not labelled as an SWSSB phase.
+  \storyheading{190}{00}{First: strong and weak symmetry}
+  \figtext[Ink]{836}{247}{30}{Does every ensemble component carry the same global charge?}
+  \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
+    (65,287) rectangle (793,681);
+  \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
+    (879,287) rectangle (1607,681);
+  \figtext{429}{321}{36}{\textbf{Strong symmetry}}
+  \figtext{1243}{321}{36}{\textbf{Weak symmetry only}}
+  \figtext[Sage]{429}{359}{28}{One definite global charge}
+  \figtext[Ink]{1243}{359}{28}{A mixture of charge sectors}
+
+  \symcomponent{0}{413}{1}{1,1,1,1}{1}
+  \symcomponent{12}{483}{2}{-1,-1,1,1}{1}
+  \symcomponent{-6}{553}{3}{1,-1,1,-1}{1}
+  \symcomponent{814}{413}{1}{1,1,1,1}{1}
+  \symcomponent{826}{483}{2}{-1,1,1,1}{-1}
+  \symcomponent{808}{553}{3}{1,-1,1,1}{-1}
+
+  \figmath[Sage]{429}{614}{34}{Q\rho_{\mathrm s}=q\rho_{\mathrm s},\qquad q=+1}
+  \figmath[Blue]{1243}{614}{34}{Q\rho_{\mathrm w}Q^{\dagger}=\rho_{\mathrm w}}
+  \figtext[Ink]{429}{655}{25}{Every component acquires the same symmetry phase}
+  \figtext[Ink]{1243}{655}{25}{Each projector is invariant; the charges can differ}
+
+  \figmath[Ink]{836}{721}{27}{
+    Q=\prod\nolimits_jX_j,\quad q=\prod\nolimits_jx_j,\quad x_j=\pm1\text{ (shown signs)}
+    \qquad\text{Rows: }X\text{-basis mixture components}
+  }
+  \figtext{836}{764}{30}{\textbf{Strong symmetry also implies weak symmetry}}
+  \figtext[Ink]{836}{806}{25}{These are finite-state definitions. SWSSB order below develops while the global charge stays fixed.}
+  \draw[Rule,line width=2bp] (50,835) -- (1622,835);
+
+  % Make room for panel 00 while retaining the existing story composition.
+  \begin{scope}[shift={(0,730)}]
 
   % 1. Three complementary views of the ZZ-dephasing steady states.
   % Z arrows are individual measurement outcomes, not an ensemble
@@ -124,7 +190,7 @@
   % arbitrary Renyi diagnostic. Both detect order in this exact example.
   \draw[draw=Rule,fill=BlueTint!65,line width=1.5bp,rounded corners=15bp]
     (50,850) rectangle (1622,930);
-  \figtext{836}{875}{27}{\textbf{Global SWSSB reference: Lessa et al.}}
+  \figtext{836}{875}{27}{Global SWSSB reference: Lessa et al.}
   \figtext[Ink]{836}{908}{24}{\textit{Strong-to-Weak Spontaneous Symmetry Breaking in Mixed Quantum States} $\cdot$ PRX Quantum \textbf{6}, 010344 (2025)}
 
   % Compare the SAME charge-changing probe inside the window in two phases.
@@ -192,20 +258,21 @@
   \figmath[Ink]{836}{1347}{26}{F_A=F(\rho_A,\sigma_A),\qquad \sigma=Z_i\rho Z_i,\quad i\in A}
   \figtext[Muted]{836}{1379}{22}{Illustrative product and fully scrambled states $\cdot$ $A$ excludes at least one site $\cdot$ $Q=\prod\nolimits_j X_j$}
   \draw[draw=Sage!45,fill=SageTint,line width=1.5bp,rounded corners=15bp]
-    (50,1404) rectangle (1622,1584);
-  \figtext{836}{1431}{27}{\textbf{Local SWSSB reference: Divi, Lessa \& Wang}}
+    (50,1404) rectangle (1622,1626);
+  \figtext{836}{1431}{27}{Local SWSSB reference: Divi, Lessa \& Wang}
   \figtext[Ink]{836}{1466}{25}{\textit{Local Strong-to-Weak Spontaneous Symmetry Breaking} $\cdot$ arXiv:2605.28967}
   % Complementary local diagnostics, distinct from the fidelity implication below.
   \figtext[Ink]{836}{1506}{25}{Carolyn Zhang $\cdot$ arXiv:2605.29113 $\cdot$ Local fidelity diagnostics}
   \figtext[Ink]{836}{1544}{25}{Tang, Kattel \& J. H. Pixley $\cdot$ arXiv:2606.02713 $\cdot$ Mean-field trajectory diagnostics}
-  \figtext[Muted]{836}{1610}{22}{Related local-learning perspective: Kumar et al., arXiv:2602.11262}
+  \figtext[Ink]{836}{1582}{25}{Jong Yeon Lee $\cdot$ arXiv:2605.05288 $\cdot$ Charge scrambling and SWSSB}
+  \figtext[Muted]{836}{1652}{22}{Related local-learning perspective: Kumar et al., arXiv:2602.11262}
   \end{scope}
 
   % Strict containment for FIDELITY-defined local/global SWSSB.
   % Theorem II.1 proves global => local; Sec. II.3 supplies local-only
   % examples. ETH refers to locally thermal pure eigenstates with no
   % ordinary symmetry breaking, in the limit 1 << ell_A << L.
-  \begin{scope}[shift={(0,320)}]
+  \begin{scope}[shift={(0,370)}]
   \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
     (65,1448) rectangle (1607,1720);
   \figtext{836}{1477}{31}{\textbf{How local and global SWSSB are related}}
@@ -227,7 +294,7 @@
   \end{scope}
 
   % 2. Large waterfall plot, following the user's reference composition.
-  \begin{scope}[shift={(0,1220)}]
+  \begin{scope}[shift={(0,1270)}]
   \draw[Rule,line width=2bp] (50,861) -- (1622,861);
   \storyheading{926}{02}{Watch the nonlinear order spread}
   \figtext[Ink]{836}{984}{30}{Each ridge is a later snapshot of the same chain}
@@ -311,6 +378,7 @@
   }
   \figtext[Muted]{836}{2053}{23}{Pair-dephasing example: Appendix A $\cdot$ Symmetry-dependent scaling: Sections III--IV}
   \figtext[Muted]{836}{2095}{26}{Finite chains: onset at $\xi_{R_2}\sim L$. Infinite chains: long-range order emerges only as $t\to\infty$.}
+  \end{scope}
   \end{scope}
 \end{tikzpicture}
 \end{document}
