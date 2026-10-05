@@ -157,33 +157,11 @@
             <img src="assets/img/swssb.svg?v=purification-view-13" width="1672" height="4400" loading="lazy" decoding="async"
                  alt="An introductory visual story of SWSSB. Panel 00 contrasts strong symmetry with one definite charge and weak-only symmetry mixing charge sectors. Panel 01 compares independent Z-measurement shots with a purification construction: blue system sites and gold environment ancillas form two separately framed copies, the second complex conjugated. Green Bell-state projection bridges pair every corresponding environment ancilla. After postselection, correlations of paired system operators reveal long-range Rényi-2 order. The figure cites Sala, Gopalakrishnan, Oshikawa and You on the purification perspective. The local SWSSB view compares charge detectability within a patch, with citations including Jong Yeon Lee on charge scrambling. A nested-set diagram places global inside local fidelity SWSSB. The half-transparent waterfall shows nonlinear correlation profiles spreading with time; the final comparison shows exponential Z2 and algebraic U(1) growth.">
             <figcaption>
-              What SWSSB means, how its nonlinear order spreads, and how symmetry controls the growth rate.
-              Panel 00 defines symmetry for a finite mixed state using \(Q=\prod_jX_j\):
-              strong symmetry has \(Q\rho_{\mathrm s}=q\rho_{\mathrm s}\) with one definite charge,
-              whereas weak symmetry requires \(Q\rho_{\mathrm w}Q^\dagger=\rho_{\mathrm w}\).
-              The weak-only example mixes charge sectors. Each framed row is an \(X\)-basis ensemble component,
-              and its charge is the product of the displayed signs. A fixed-charge state can still develop
-              SWSSB through its thermodynamic-limit nonlinear correlations.
-              Panel 01's first block is <strong>global SWSSB</strong>: separate shot cards show independent
-              measurements of fresh copies of the same 1D state. The nonlinear view follows
-              <a href="https://doi.org/10.1103/PhysRevB.110.155150">Sala, Gopalakrishnan, Oshikawa and You, Phys. Rev. B 110, 155150 (2024)</a>
-              (<a href="https://arxiv.org/html/2405.02402v1#S3.SS1">arXiv:2405.02402, Section III.1 and Appendix A</a>):
-              start with \(\rho=\operatorname{Tr}_E\lvert\Psi\rangle\langle\Psi\rvert\), duplicate the purification
-              as \(\lvert\Psi\rangle\otimes\lvert\Psi^*\rangle\), and postselect every environment pair into
-              \(\lvert\Phi^+\rangle=(\lvert00\rangle+\lvert11\rangle)/\sqrt2\).
-              The normalized remaining system state is \(\lvert\rho\rangle\!\rangle/\sqrt{\operatorname{Tr}\rho^2}\).
-              Its paired operators \(O_i=Z_i^{(1)}Z_i^{(2)}\) obey \(\langle O_iO_j\rangle_{\mathrm{post}}=R_2(i,j)\).
-              In this exact example, both the Rényi-2 and global fidelity correlators detect the hidden order;
-              they are distinct diagnostics in general. Its <strong>local SWSSB</strong> block applies the same local
-              charge flip in an unbroken product-state reference and a fully scrambled SWSSB state. In the local formulation, the fidelity
-              \(F_A=F(\rho_A,\sigma_A)\) tends to zero in an unbroken strong phase and stays nonzero in local SWSSB
-              as the window around the flip grows. The illustration shows the exact limiting values zero and one.
-              The nested-set diagram shows that, for fidelity-based definitions, local SWSSB is necessary but not
-              sufficient for global SWSSB. Locally thermal pure ETH states without ordinary symmetry breaking
-              provide a local-only example, as discussed in
-              <a href="https://arxiv.org/html/2605.28967v1#S2">Theorem II.1 and Section II.3</a>.
-              The measurement snapshots, purification construction, and patch diagrams are schematic; the waterfall profiles
-              are calculated from the pair-dephasing example in Appendix A.
+              SWSSB carries hidden order that ordinary correlations miss. Bell postselection reveals it in two purified
+              copies, following <a href="https://doi.org/10.1103/PhysRevB.110.155150">Sala et al.</a>
+              The local view tests whether a patch detects a charge flip. The waterfall shows analytic pair-dephasing
+              profiles; the final panel contrasts exponential \(\mathbb{Z}_2\) and algebraic \(U(1)\) growth.
+              Other drawings are schematic.
               <a href="assets/img/swssb.svg?v=purification-view-13">View the full-size SVG →</a>
             </figcaption>
           </figure>
