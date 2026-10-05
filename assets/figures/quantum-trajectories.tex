@@ -34,8 +34,8 @@
   \operationbox{690}{524}{840}{578}
   \figtext{765}{327}{31}{\textbf{No jump}}
   \figtext{765}{551}{31}{\textbf{Jump}}
-  \figmath{664}{292}{31}{p_0}
-  \figmath{664}{509}{31}{p_\mu}
+  \figmath{765}{272}{31}{p_0}
+  \figmath{765}{496}{31}{p_\mu}
   \figmath{770}{387}{25}{(I-iH_{\mathrm{eff}}\Delta t)\lvert\psi\rangle}
   \figmath{765}{612}{34}{L_\mu\lvert\psi\rangle}
   \statebox{920}{409}{1042}{475}
@@ -43,17 +43,42 @@
   \figmath{981}{514}{27}{\lvert\psi(t+\Delta t)\rangle}
   \figtext[Ink]{812}{681}{27}{Sample one outcome\\at each time step}
 
-  % Schematic histories, not plotted observables or numerical data.
-  \draw[time arrow] (1125,270) -- (1618,270);
-  \figmath{1618}{238}{35}{t}
-  \draw[blue arrow] (1120,329) -- (1150,329) -- (1150,343) --
-    (1172,343) -- (1172,334) -- (1270,334) -- (1270,329) -- (1360,329);
-  \draw[blue arrow] (1120,425) -- (1158,425) -- (1158,443) --
-    (1242,443) -- (1242,435) -- (1298,435) -- (1298,440) -- (1360,440);
-  \draw[blue arrow] (1120,550) -- (1170,550) -- (1170,556) --
-    (1260,556) -- (1260,545) -- (1310,545) -- (1310,550) -- (1360,550);
-  \foreach \x/\y in {1190/334,1158/443,1242/435,1152/550,1212/556,1260/545,1310/550} {
-    \fill[Gold] (\x,\y) circle (7bp);
+  % Schematic wavefunction paths, following the user's sketch.
+  % Smooth blue no-jump evolution is interrupted only by green jump arrows.
+  % Vertical position is illustrative, not a norm or numerical observable.
+  \draw[wire] (1160,246) .. controls (1170,239) and (1180,253) .. (1190,246);
+  \figtext[Ink]{1270}{246}{21}{Smooth evolution}
+  \draw[draw=Sage,line width=3.5bp,-{Stealth[length=11bp,width=10bp]}]
+    (1391,233) -- (1391,258);
+  \figtext[Sage]{1496}{246}{21}{Quantum jump}
+  \foreach \y/\m in {370/1,480/2,590/M} {
+    \draw[time arrow] (1120,\y) -- (1340,\y);
+    \draw[time arrow] (1120,\y) -- (1120,{\y-88});
+    \figmath[Muted]{1115}{\y-103}{23}{\psi_{\m}}
+    \figmath[Muted]{1340}{\y+18}{23}{t}
+  }
+
+  \draw[wire] (1140,361) .. controls (1148,338) and (1164,333) .. (1178,315);
+  \draw[wire] (1178,351) .. controls (1192,335) and (1210,333) .. (1228,321);
+  \draw[wire] (1228,293) .. controls (1245,282) and (1261,283) .. (1275,278);
+  \draw[blue arrow] (1275,349) .. controls (1300,337) and (1335,329) .. (1360,329);
+
+  \draw[wire] (1140,475) .. controls (1150,454) and (1170,453) .. (1189,444);
+  \draw[wire] (1189,420) .. controls (1208,412) and (1234,409) .. (1250,398);
+  \draw[wire] (1250,468) .. controls (1266,454) and (1282,456) .. (1300,444);
+  \draw[blue arrow] (1300,462) .. controls (1320,449) and (1340,440) .. (1360,440);
+
+  \draw[wire] (1140,584) .. controls (1146,566) and (1150,550) .. (1168,537);
+  \draw[wire] (1168,576) .. controls (1182,558) and (1208,559) .. (1224,545);
+  \draw[wire] (1224,522) .. controls (1240,511) and (1263,516) .. (1282,510);
+  \draw[blue arrow] (1282,578) .. controls (1308,560) and (1340,550) .. (1360,550);
+
+  \foreach \x/\before/\after in {
+    1178/315/351,1228/321/293,1275/278/349,
+    1189/444/420,1250/398/468,1300/444/462,
+    1168/537/576,1224/545/522,1282/510/578} {
+    \draw[draw=Sage,line width=3.5bp,line cap=round,
+      -{Stealth[length=11bp,width=10bp]}] (\x,\before) -- (\x,\after);
   }
   \draw[wire] (1475,329) .. controls (1530,329) and (1500,427) .. (1545,427);
   \draw[wire] (1475,440) -- (1545,440);
@@ -65,11 +90,11 @@
   \foreach \y in {490,502,514} {\fill[Navy] (1417,\y) circle (3bp);}
   \statebox{1545}{407}{1635}{475}
   \figmath{1590}{441}{34}{\rho(t)}
-  \figmath{1365}{637}{31}{
+  \figmath{1365}{663}{30}{
     \rho(t)\approx\frac{1}{M}\sum_{m=1}^{M}
     \lvert\psi_m(t)\rangle\langle\psi_m(t)\rvert
   }
-  \figtext[Ink]{1365}{710}{29}{Average pure-state projectors}
+  \figtext[Ink]{1365}{716}{27}{Average pure-state projectors}
 
   \processstrip{Compute probabilities}{Sample an outcome}{Normalize}{Repeat}
   \figmath{836}{894}{29}{

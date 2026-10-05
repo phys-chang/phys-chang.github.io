@@ -29,7 +29,10 @@ FIGURES = {
         941,
         "Monte Carlo wavefunction method",
         "Prepare independent pure-state trajectories, sample a no-jump or jump "
-        "outcome at each time step, normalize, and average pure-state projectors.",
+        "outcome at each time step, normalize, and average pure-state projectors. "
+        "Probability labels are aligned over their corresponding outcomes. "
+        "Schematic blue wavefunction paths evolve smoothly between abrupt "
+        "quantum jumps shown as green vertical arrows.",
     ),
     "open-system": (
         1672,
@@ -41,7 +44,7 @@ FIGURES = {
     ),
     "swssb": (
         1672,
-        2680,
+        2720,
         "Universal dynamical scaling of strong-to-weak symmetry breaking",
         "A large introductory visual story with three complementary views of "
         "SWSSB. In the pair-dephasing steady state, ordinary Z-spin measurements have zero "
