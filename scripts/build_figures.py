@@ -43,8 +43,11 @@ FIGURES = {
         1672,
         2140,
         "Universal dynamical scaling of strong-to-weak symmetry breaking",
-        "A large introductory visual story: pair dephasing turns sharp local "
-        "parity into fluctuating local parity while global parity stays fixed. "
+        "A large introductory visual story with two views of the same "
+        "pair-dephasing steady state: ordinary Z-spin measurements have zero "
+        "correlation, while a nonlinear two-copy overlap reveals long-range "
+        "Renyi-2 order. A single X-basis spin flip changes the ensemble, while "
+        "two distant flips preserve it. Global parity stays conserved. "
         "A vector waterfall of analytic Renyi-2 correlation profiles shows "
         "nonlinear order spreading across a chain even though ordinary Z-spin "
         "correlations stay zero in this example. A compact comparison shows "
