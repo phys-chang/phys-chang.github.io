@@ -1,5 +1,8 @@
 \documentclass[dvisvgm,border=0pt]{standalone}
 \input{figure-style.tex}
+\definecolor{Jump}{HTML}{D94832}
+\tikzset{quantum jump/.style={draw=Jump,line width=4.5bp,line cap=round,
+  -{Stealth[length=13bp,width=12bp]}}}
 
 \begin{document}
 \begin{tikzpicture}[x=1bp,y=-1bp]
@@ -44,13 +47,12 @@
   \figtext[Ink]{812}{681}{27}{Sample one outcome\\at each time step}
 
   % Schematic wavefunction paths, following the user's sketch.
-  % Smooth blue no-jump evolution is interrupted only by green jump arrows.
+  % Smooth blue no-jump evolution is interrupted only by warm red jump arrows.
   % Vertical position is illustrative, not a norm or numerical observable.
   \draw[wire] (1160,246) .. controls (1170,239) and (1180,253) .. (1190,246);
   \figtext[Ink]{1270}{246}{21}{Smooth evolution}
-  \draw[draw=Sage,line width=3.5bp,-{Stealth[length=11bp,width=10bp]}]
-    (1391,233) -- (1391,258);
-  \figtext[Sage]{1496}{246}{21}{Quantum jump}
+  \draw[quantum jump] (1391,233) -- (1391,258);
+  \figtext[Jump]{1496}{246}{21}{Quantum jump}
   \foreach \y/\m in {370/1,480/2,590/M} {
     \draw[time arrow] (1120,\y) -- (1340,\y);
     \draw[time arrow] (1120,\y) -- (1120,{\y-88});
@@ -77,8 +79,7 @@
     1178/315/351,1228/321/293,1275/278/349,
     1189/444/420,1250/398/468,1300/444/462,
     1168/537/576,1224/545/522,1282/510/578} {
-    \draw[draw=Sage,line width=3.5bp,line cap=round,
-      -{Stealth[length=11bp,width=10bp]}] (\x,\before) -- (\x,\after);
+    \draw[quantum jump] (\x,\before) -- (\x,\after);
   }
   \draw[wire] (1475,329) .. controls (1530,329) and (1500,427) .. (1545,427);
   \draw[wire] (1475,440) -- (1545,440);

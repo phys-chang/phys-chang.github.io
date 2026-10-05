@@ -32,7 +32,7 @@ FIGURES = {
         "outcome at each time step, normalize, and average pure-state projectors. "
         "Probability labels are aligned over their corresponding outcomes. "
         "Schematic blue wavefunction paths evolve smoothly between abrupt "
-        "quantum jumps shown as green vertical arrows.",
+        "quantum jumps shown as prominent warm red vertical arrows.",
     ),
     "open-system": (
         1672,
