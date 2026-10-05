@@ -44,14 +44,16 @@ FIGURES = {
     ),
     "swssb": (
         1672,
-        3260,
+        3360,
         "Universal dynamical scaling of strong-to-weak symmetry breaking",
         "A large introductory visual story with three complementary views of "
         "SWSSB. Panel 01 explicitly separates global SWSSB, measured by whole-state "
         "nonlinear correlations, from local SWSSB, measured by fidelity in a local window. "
         "Prominent citation bands credit Lessa et al., PRX Quantum 6, 010344 (2025), "
         "for the global formulation and Divi, Lessa and Wang, arXiv:2605.28967, "
-        "for the local formulation. In the pair-dephasing steady state, ordinary Z-spin measurements have zero "
+        "for the local formulation. Related references credit Carolyn Zhang, arXiv:2605.29113, "
+        "for local fidelity diagnostics, and Tang, Kattel and J. H. Pixley, arXiv:2606.02713, "
+        "for mean-field trajectory diagnostics. In the pair-dephasing steady state, ordinary Z-spin measurements have zero "
         "correlation. Separate staggered cards labelled Shot 1, Shot 2 and Shot 3 "
         "show independent measurements of fresh copies of the same 1D state. "
         "A nonlinear two-copy overlap reveals long-range "
@@ -162,7 +164,7 @@ def build_swssb_preview():
     root = ET.parse(DESTINATION / "swssb.svg").getroot()
     x, y, width, height = map(float, root.attrib["viewBox"].split())
     canvas_width, canvas_height = FIGURES["swssb"][:2]
-    crop_top, crop_height = 1968, 941
+    crop_top, crop_height = 2068, 941
     root.attrib.update(
         width=str(canvas_width),
         height=str(crop_height),

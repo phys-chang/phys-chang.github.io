@@ -20,7 +20,7 @@
 
 \begin{document}
 \begin{tikzpicture}[x=1bp,y=-1bp]
-  \figbackground{1672}{3260}
+  \figbackground{1672}{3360}
   \figtext[Ink]{836}{85}{38}{Strong-to-weak spontaneous symmetry breaking}
 
   % 1. Three complementary views of the ZZ-dephasing steady states.
@@ -192,17 +192,20 @@
   \figmath[Ink]{836}{1347}{26}{F_A=F(\rho_A,\sigma_A),\qquad \sigma=Z_i\rho Z_i,\quad i\in A}
   \figtext[Muted]{836}{1379}{22}{Illustrative product and fully scrambled states $\cdot$ $A$ excludes at least one site $\cdot$ $Q=\prod\nolimits_j X_j$}
   \draw[draw=Sage!45,fill=SageTint,line width=1.5bp,rounded corners=15bp]
-    (50,1404) rectangle (1622,1490);
+    (50,1404) rectangle (1622,1584);
   \figtext{836}{1431}{27}{\textbf{Local SWSSB reference: Divi, Lessa \& Wang}}
   \figtext[Ink]{836}{1466}{25}{\textit{Local Strong-to-Weak Spontaneous Symmetry Breaking} $\cdot$ arXiv:2605.28967}
-  \figtext[Muted]{836}{1514}{22}{Related local-learning perspective: Kumar et al., arXiv:2602.11262}
+  % Complementary local diagnostics, distinct from the fidelity implication below.
+  \figtext[Ink]{836}{1506}{25}{Carolyn Zhang $\cdot$ arXiv:2605.29113 $\cdot$ Local fidelity diagnostics}
+  \figtext[Ink]{836}{1544}{25}{Tang, Kattel \& J. H. Pixley $\cdot$ arXiv:2606.02713 $\cdot$ Mean-field trajectory diagnostics}
+  \figtext[Muted]{836}{1610}{22}{Related local-learning perspective: Kumar et al., arXiv:2602.11262}
   \end{scope}
 
   % Strict containment for FIDELITY-defined local/global SWSSB.
   % Theorem II.1 proves global => local; Sec. II.3 supplies local-only
   % examples. ETH refers to locally thermal pure eigenstates with no
   % ordinary symmetry breaking, in the limit 1 << ell_A << L.
-  \begin{scope}[shift={(0,220)}]
+  \begin{scope}[shift={(0,320)}]
   \draw[draw=Rule,fill=white,line width=1.5bp,rounded corners=18bp]
     (65,1448) rectangle (1607,1720);
   \figtext{836}{1477}{31}{\textbf{How local and global SWSSB are related}}
@@ -224,7 +227,7 @@
   \end{scope}
 
   % 2. Large waterfall plot, following the user's reference composition.
-  \begin{scope}[shift={(0,1120)}]
+  \begin{scope}[shift={(0,1220)}]
   \draw[Rule,line width=2bp] (50,861) -- (1622,861);
   \storyheading{926}{02}{Watch the nonlinear order spread}
   \figtext[Ink]{836}{984}{30}{Each ridge is a later snapshot of the same chain}
