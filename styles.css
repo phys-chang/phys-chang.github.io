@@ -557,6 +557,11 @@ main > .section-block:first-child {
   background: linear-gradient(180deg, var(--accent-soft), var(--paper) 74%);
 }
 
+.home-story-card--swssb {
+  width: min(100%, 50rem);
+  justify-self: center;
+}
+
 .home-story-art {
   position: relative;
   display: block;
