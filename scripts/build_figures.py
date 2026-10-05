@@ -48,7 +48,9 @@ FIGURES = {
         "Universal dynamical scaling of strong-to-weak symmetry breaking",
         "A large introductory visual story with three complementary views of "
         "SWSSB. In the pair-dephasing steady state, ordinary Z-spin measurements have zero "
-        "correlation, while a nonlinear two-copy overlap reveals long-range "
+        "correlation. Separate staggered cards labelled Shot 1, Shot 2 and Shot 3 "
+        "show independent measurements of fresh copies of the same 1D state. "
+        "A nonlinear two-copy overlap reveals long-range "
         "Renyi-2 order. A single X-basis spin flip changes the ensemble, while "
         "two distant flips preserve it. A local-learnability view contrasts "
         "unbroken strong symmetry and SWSSB using the same charge flip inside "

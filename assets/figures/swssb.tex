@@ -12,10 +12,10 @@
     at (152,#1) {#3};
 }
 \newcommand{\zoutcome}[3]{
-  \fill[Blue,opacity=.08] (#1+3,#2+4) circle (18bp);
-  \draw[draw=Blue,fill=BlueTint,line width=2.5bp] (#1,#2) circle (18bp);
-  \draw[draw=Blue,line width=2.5bp,-{Stealth[length=9bp,width=8bp]}]
-    (#1,{#2+11*#3}) -- (#1,{#2-11*#3});
+  \fill[Blue,opacity=.08] (#1+2,#2+3) circle (14bp);
+  \draw[draw=Blue,fill=BlueTint,line width=2.2bp] (#1,#2) circle (14bp);
+  \draw[draw=Blue,line width=2.2bp,-{Stealth[length=7bp,width=6bp]}]
+    (#1,{#2+8*#3}) -- (#1,{#2-8*#3});
 }
 
 \begin{document}
@@ -38,20 +38,27 @@
   \figtext{429}{365}{34}{\textbf{Ordinary view}}
   \figtext{1243}{365}{34}{\textbf{Nonlinear view}}
 
-  % Random Z outcomes visibly have no common orientation.
-  \foreach \y in {422,468,514} {
-    \draw[Rule,line width=3bp] (139,\y) -- (719,\y);
+  % Each framed, staggered card is an independent Z-measurement shot
+  % from a fresh preparation of the same 1D state. Cards are not rows of
+  % a 2D lattice and there are no connections between separate shots.
+  \foreach \y/\dx/\shot in {416/0/1,468/21/2,520/-12/3} {
+    \fill[Blue,opacity=.045,rounded corners=11bp]
+      ({110+\dx},{\y-19}) rectangle ({736+\dx},{\y+25});
+    \draw[draw=Rule,fill=Ice!35,line width=1.4bp,rounded corners=11bp]
+      ({107+\dx},{\y-22}) rectangle ({733+\dx},{\y+22});
+    \figtext[Ink]{170+\dx}{\y}{22}{Shot \shot}
+    \draw[Rule,line width=3bp] ({260+\dx},\y) -- ({690+\dx},\y);
   }
-  \foreach \x/\s in {139/1,255/-1,371/1,487/1,603/-1,719/1} {
-    \zoutcome{\x}{422}{\s}
+  \foreach \x/\s in {260/1,346/-1,432/1,518/1,604/-1,690/1} {
+    \zoutcome{\x}{416}{\s}
   }
-  \foreach \x/\s in {139/-1,255/1,371/-1,487/-1,603/1,719/-1} {
-    \zoutcome{\x}{468}{\s}
+  \foreach \x/\s in {260/-1,346/1,432/-1,518/-1,604/1,690/-1} {
+    \zoutcome{\x+21}{468}{\s}
   }
-  \foreach \x/\s in {139/1,255/1,371/-1,487/1,603/1,719/-1} {
-    \zoutcome{\x}{514}{\s}
+  \foreach \x/\s in {260/1,346/1,432/-1,518/1,604/1,690/-1} {
+    \zoutcome{\x-12}{520}{\s}
   }
-  \figtext[Ink]{429}{551}{25}{Example $Z$-spin measurement outcomes}
+  \figtext[Ink]{429}{559}{23}{Independent $Z$-measurement shots of a 1D chain}
 
   % Abstract density-matrix sheets with local operator insertions.
   \foreach \dy in {0,67} {
